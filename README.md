@@ -1,3 +1,16 @@
+> Frontend of the [meetapp backend app](https://github.com/psatler/meetapp-backend)
+
+The frontend web is dedicated for meetup organizers and does not have subscription feature.
+So, the organizers can create the meetup and set up its pieces of information, like where it is taking place, banner photo, etc.
+
+This project has ESLint and Prettier configured as its linter and formatting tools respectively.
+
+## Acknowledgements
+
+- A good reference to set up ESLint along with Typescript and Prettier can be found at [https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project](https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project)
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
