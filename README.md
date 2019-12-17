@@ -1,3 +1,16 @@
+<p align="center">
+  <img alt="Repository Last Commit Date" src="https://img.shields.io/github/last-commit/psatler/meetapp-frontend?color=blue">
+
+  <a href="https://www.linkedin.com/in/pablosatler/">
+    <img alt="Made by Pablo Satler" src="https://img.shields.io/badge/made%20by-Pablo%20Satler-blue">
+  </a>
+
+  <img alt="License" src="https://img.shields.io/github/license/psatler/meetapp-frontend?color=blue">
+
+</p>
+
+# Meetapp Frontend
+
 > Frontend of the [meetapp backend app](https://github.com/psatler/meetapp-backend)
 
 The frontend web is dedicated for meetup organizers and does not have subscription feature.
