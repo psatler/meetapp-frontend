@@ -16,11 +16,71 @@
 The frontend web is dedicated for meetup organizers and does not have subscription feature.
 So, the organizers can create the meetup and set up its pieces of information, like where it is taking place, banner photo, etc.
 
-This project has ESLint and Prettier configured as its linter and formatting tools respectively.
+This project has ESLint and Prettier configured as its linter and formatting tools respectively along with tools like Redux and Redux Saga, and Reactotron.
 
-## Acknowledgements
+---
+
+### Screens of the app
+
+#### Authentication
+
+The user will be able to authenticate themselves by email and password.
+
+#### Registration
+
+The user will be able to register themselves in the application using name, e-mail and password.
+
+#### Dashboard
+
+The user can list all the meetup they organize and click on them to see more details about it.
+
+In this screen, the user can navigate to page to create new meetups.
+
+#### Details
+
+The user can visualize more details of a given meetup previously registered.
+
+In this screen, they can edit the pieces of information about a meetup or even cancel it.
+
+#### New / Edit
+
+The user can register or edit pieces of information about the meetups they organize.
+
+They can preview the banner image of the meetup when they select an image.
+
+All the form fields must be validated.
+
+#### Profile
+
+The user can edit its pieces of information registered on the application.
+
+All the form fields must be validated.
+
+---
+
+### Acknowledgements
 
 - A good reference to set up ESLint along with Typescript and Prettier can be found at [https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project](https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project)
+
+&nbsp;
+&nbsp;
+&nbsp;
+
+&nbsp;
+&nbsp;
+&nbsp;
+
+&nbsp;
+&nbsp;
+&nbsp;
+
+&nbsp;
+&nbsp;
+&nbsp;
+
+&nbsp;
+&nbsp;
+&nbsp;
 
 ---
 
