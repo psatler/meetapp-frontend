@@ -41,6 +41,16 @@ module.exports = {
         extensions: ['.tsx'],
       },
     ],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+        {
+          "js": "never",
+          "jsx": "never",
+          "ts": "never",
+          "tsx": "never"
+        }
+    ],
     'react/jsx-one-expression-per-line': 'off',
     // enabling exporting without export default
     'import/prefer-default-export': 'off',
