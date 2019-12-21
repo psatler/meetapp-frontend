@@ -1,17 +1,15 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-// auth routes
-import SignIn from '../pages/SignIn';
-import SignUp from '../pages/SignUp';
-
 // routes accessed after authorization
 import Dashboard from '../pages/Dashboard';
 import Details from '../pages/Details';
-import Profile from '../pages/Profile';
 import NewEdit from '../pages/NewEdit';
-
 import NoMatch from '../pages/NoMatch';
+import Profile from '../pages/Profile';
+// auth routes
+import SignIn from '../pages/SignIn';
+import SignUp from '../pages/SignUp';
 
 export default function Routes() {
   return (
