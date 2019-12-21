@@ -78,6 +78,11 @@ module.exports = {
           alphabetize: { order: 'asc', ignoreCase: true },
       },
     ],
+    'react/jsx-props-no-spreading': ['error', {
+      // html: "ignore",
+      custom: "ignore",
+      exceptions: [],
+    }],
   },
   settings: {
     // 'import/parsers': {
