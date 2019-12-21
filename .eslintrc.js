@@ -6,8 +6,8 @@ module.exports = {
   },
   extends: [
     // 'react-app',
-    'airbnb',
     'plugin:react/recommended', // Uses the recommended rules from @eslint-plugin-react
+    'airbnb',
     'plugin:@typescript-eslint/recommended', // Uses the recommended rules from the @typescript-eslint/eslint-plugin
     "prettier/@typescript-eslint", // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
     "plugin:prettier/recommended" // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
@@ -31,7 +31,8 @@ module.exports = {
     'jsx-a11y', // to help with some jsx rules
     '@typescript-eslint',
     'react-hooks',
-    'prettier', // https://prettier.io/docs/en/integrating-with-linters.html#use-eslint-to-run-prettier
+    'prettier', // https://prettier.io/docs/en/integrating-with-linters.html#use-eslint-to-run-prettier,
+    'eslint-plugin-import-helpers',
   ],
   rules: {
     "prettier/prettier": "error",
@@ -64,7 +65,19 @@ module.exports = {
     'camelcase': 'off',
     'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn'
+    'react-hooks/exhaustive-deps': 'warn',
+    'import-helpers/order-imports': [
+      'warn',
+      {
+          newlinesBetween: 'always', // new line between groups
+          groups: [
+              '/^react/', // sorting modules that start with react first
+              'module',
+              ['parent', 'sibling', 'index'],
+          ],
+          alphabetize: { order: 'asc', ignoreCase: true },
+      },
+  ],
   },
   settings: {
     // 'import/parsers': {
