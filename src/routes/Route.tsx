@@ -1,9 +1,13 @@
 import React from 'react';
 import { Route, Redirect, RouteProps } from 'react-router-dom';
 
+import AuthLayout from '../pages/_layouts/auth';
+import DefaultLayout from '../pages/_layouts/default';
+
 interface OwnProps {
   isPrivate?: boolean;
-  // component: React.ElementType; // already defined in RouteProps
+  // eslint-disable-next-line
+  component: any;
 }
 
 type Props = RouteProps & OwnProps;
@@ -26,5 +30,17 @@ export default function RouteWrapper({
     return <Redirect to="/dashboard" />;
   }
 
-  return <Route {...rest} component={Component} />;
+  // choosing which template to use based on if the user is logged in or not
+  const Layout = loggedIn ? DefaultLayout : AuthLayout;
+
+  return (
+    <Route
+      {...rest}
+      render={props => (
+        <Layout>
+          <Component {...props} />
+        </Layout>
+      )}
+    />
+  );
 }
