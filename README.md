@@ -19,10 +19,12 @@ So, the organizers can create the meetup and set up its pieces of information, l
 This project has ESLint and Prettier configured as its linter and formatting tools respectively along with tools like Redux and Redux Saga, and Reactotron.
 
 ---
+
 ### Table of Contents
 
 <!-- - [How to Run](#how-to-run) -->
 <!-- - [Features](#features) -->
+
 - [Screens of the app](#screens-of-the-app)
 - [Some dependecies used](#some-dependecies-used)
 - [Acknowledgements](#acknowledgements)
@@ -82,8 +84,12 @@ All the form fields must be validated.
 
 - A good reference to set up ESLint along with Typescript and Prettier can be found at [https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project](https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project)
 
+- CSS speech bubbles made easy at [https://leaverou.github.io/bubbly/](https://leaverou.github.io/bubbly/)
+
 ---
+
 ### License
+
 This project is licensed under the terms of the [MIT License](https://opensource.org/licenses/MIT) © Pablo Satler 2019
 
 ---

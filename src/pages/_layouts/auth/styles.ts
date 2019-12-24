@@ -36,7 +36,6 @@ export const Content = styled.div`
 
     span {
       /* display: inline-block; */
-      /* position: relative; */
       align-self: flex-end;
       background-color: #fce4e4;
       border: 1px solid #fcc2c3;
@@ -45,6 +44,22 @@ export const Content = styled.div`
       font-weight: bold;
       padding: 7px 11px 4px;
       margin-bottom: 3px;
+
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 15%;
+        width: 0;
+        height: 0;
+        border: 8px solid transparent;
+        border-bottom-color: #fce4e4;
+        border-top: 0;
+        margin-left: -8px;
+        margin-top: -8px;
+      }
 
       &:last-of-type {
         margin-bottom: 0;
