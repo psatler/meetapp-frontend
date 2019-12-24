@@ -34,6 +34,23 @@ export const Content = styled.div`
       }
     }
 
+    span {
+      /* display: inline-block; */
+      /* position: relative; */
+      align-self: flex-end;
+      background-color: #fce4e4;
+      border: 1px solid #fcc2c3;
+      border-radius: 7px;
+      color: #cc0033;
+      font-weight: bold;
+      padding: 7px 11px 4px;
+      margin-bottom: 3px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+
     button {
       margin: 5px 0 0;
       height: 44px;

@@ -10,7 +10,7 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  /* for all elements that have focus */
+  /* removing outline for all elements that have focus */
   *:focus {
     outline: 0;
   }
