@@ -19,6 +19,14 @@ So, the organizers can create the meetup and set up its pieces of information, l
 This project has ESLint and Prettier configured as its linter and formatting tools respectively along with tools like Redux and Redux Saga, and Reactotron.
 
 ---
+### Table of Contents
+
+<!-- - [How to Run](#how-to-run) -->
+<!-- - [Features](#features) -->
+- [Screens of the app](#screens-of-the-app)
+- [Some dependecies used](#some-dependecies-used)
+- [Acknowledgements](#acknowledgements)
+- [License](#license)
 
 ### Screens of the app
 
@@ -58,9 +66,27 @@ All the form fields must be validated.
 
 ---
 
+### Some dependecies used
+
+- [ESLint](https://github.com/eslint/eslint): A fully pluggable tool for identifying and reporting on patterns in JavaScript
+- [Prettier](https://github.com/prettier/prettier): An opinionated code formatter
+- [EditorConfig](https://github.com/editorconfig/editorconfig): It helps maintain consistent coding styles for multiple developers working on the same project across various editors and IDEs.
+- [Styled Components](https://github.com/styled-components/styled-components): The best bits of ES6 and CSS to style your apps without stress
+- [Unform](https://github.com/Rocketseat/unform): Create ReactJS uncontrolled form structures with nested fields, validations and much more!
+- [Yup](https://github.com/jquense/yup): Dead simple Object schema validation
+- [Axios](https://github.com/axios/axios): Promise based HTTP client for the browser and node.js
+
+---
+
 ### Acknowledgements
 
 - A good reference to set up ESLint along with Typescript and Prettier can be found at [https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project](https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project)
+
+---
+### License
+This project is licensed under the terms of the [MIT License](https://opensource.org/licenses/MIT) © Pablo Satler 2019
+
+---
 
 &nbsp;
 &nbsp;
