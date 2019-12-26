@@ -1,4 +1,6 @@
 import Reactotron from 'reactotron-react-js';
+import { reactotronRedux } from 'reactotron-redux';
+import reactotronSaga from 'reactotron-redux-saga';
 
 declare global {
   interface Console {
@@ -9,7 +11,10 @@ declare global {
 
 if (process.env.NODE_ENV === 'development') {
   // eslint-disable-next-line
-  const tron: any = Reactotron.configure().connect();
+  const tron: any = Reactotron.configure()
+    .use(reactotronRedux())
+    .use(reactotronSaga({}))
+    .connect();
 
   tron.clear();
 
