@@ -86,6 +86,8 @@ All the form fields must be validated.
 
 - CSS speech bubbles made easy at [https://leaverou.github.io/bubbly/](https://leaverou.github.io/bubbly/)
 
+- Adding Redux DevTools to work with Typescript: [https://www.mydatahack.com/getting-redux-devtools-to-work-with-typescript/](https://www.mydatahack.com/getting-redux-devtools-to-work-with-typescript/)
+
 ---
 
 ### License
