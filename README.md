@@ -77,6 +77,7 @@ All the form fields must be validated.
 - [Unform](https://github.com/Rocketseat/unform): Create ReactJS uncontrolled form structures with nested fields, validations and much more!
 - [Yup](https://github.com/jquense/yup): Dead simple Object schema validation
 - [Axios](https://github.com/axios/axios): Promise based HTTP client for the browser and node.js
+- [Typesafe actions](https://github.com/piotrwitek/typesafe-actions): Typesafe utilities designed to reduce types verbosity and complexity in Redux Architecture.
 
 ---
 

@@ -3,6 +3,7 @@ import { Route, Redirect, RouteProps } from 'react-router-dom';
 
 import AuthLayout from '../pages/_layouts/auth';
 import DefaultLayout from '../pages/_layouts/default';
+import store, { ApplicationState } from '../store';
 
 interface OwnProps {
   isPrivate?: boolean;
@@ -18,7 +19,8 @@ export default function RouteWrapper({
   isPrivate = false,
   ...rest
 }: Props) {
-  const loggedIn = false;
+  const { loggedIn } = (store.getState() as ApplicationState).auth;
+  console.log(loggedIn);
 
   // if user is not logged in but is trying to access a private route
   if (!loggedIn && isPrivate) {

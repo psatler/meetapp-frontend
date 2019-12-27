@@ -1,14 +1,15 @@
-/**
- * Action types
- */
+import { action } from 'typesafe-actions';
 
-export enum AuthTypes {}
+import { AuthTypes, AuthSuccessResponse } from './types';
 
-/**
- * Data types
- */
+export function signInRequest(email: string, password: string) {
+  return action(AuthTypes.SIGN_IN_REQUEST, { email, password });
+}
 
-/**
- * State types
- */
-export interface AuthState {}
+export function signInSuccess(token: string, user: AuthSuccessResponse) {
+  return action(AuthTypes.SIGN_IN_SUCCESS, { token, user });
+}
+
+export function signFailure() {
+  return action(AuthTypes.SIGN_FAILURE);
+}
