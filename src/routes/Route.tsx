@@ -7,7 +7,6 @@ import store from '../store';
 
 interface OwnProps {
   isPrivate?: boolean;
-  // eslint-disable-next-line
   component: ReactType;
 }
 
