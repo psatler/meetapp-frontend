@@ -89,6 +89,8 @@ All the form fields must be validated.
 
 - Adding Redux DevTools to work with Typescript: [https://www.mydatahack.com/getting-redux-devtools-to-work-with-typescript/](https://www.mydatahack.com/getting-redux-devtools-to-work-with-typescript/)
 
+- Fixing some typescript typing errors regarding [JSX element type 'Component' does not have any construct or call signatures. [2604]](https://stackoverflow.com/questions/53452966/typescript-3-jsx-element-type-component-does-not-have-any-construct-or-call-s?rq=1) when creating private routes
+
 ---
 
 ### License
