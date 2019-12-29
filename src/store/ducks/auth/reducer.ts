@@ -1,6 +1,6 @@
-import { Reducer, AnyAction } from 'redux';
+import { Reducer } from 'redux';
 
-import { AuthState, AuthTypes, SignInSuccessAction } from './types';
+import { AuthState, AuthTypes, AuthActionTypes } from './types';
 
 const INITIAL_STATE: AuthState = {
   token: '',
@@ -8,13 +8,14 @@ const INITIAL_STATE: AuthState = {
   loggedIn: false,
 };
 
-const authReducer: Reducer<AuthState> = (
+const authReducer: Reducer<AuthState, AuthActionTypes> = (
   state = INITIAL_STATE,
-  action: AnyAction
+  action: AuthActionTypes
 ) => {
   switch (action.type) {
     case AuthTypes.SIGN_IN_SUCCESS: {
-      const { token } = (action as SignInSuccessAction).payload;
+      const { token } = action.payload;
+      // const { token } = (action as SignInSuccessAction).payload;
       return {
         ...state,
         token,
