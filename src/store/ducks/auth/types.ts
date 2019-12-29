@@ -1,3 +1,5 @@
+import { UserInfo } from '../user/types';
+
 /**
  * Action types
  */
@@ -37,17 +39,6 @@ export type AuthActionTypes =
 export interface AuthSuccessResponse {
   token: string;
   user: UserInfo;
-}
-export interface UserInfo {
-  id: number;
-  name: string;
-  email: string;
-  avatar: AvatarInfo;
-}
-export interface AvatarInfo {
-  id: number;
-  url: string;
-  path: string;
 }
 
 /**

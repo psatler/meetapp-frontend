@@ -2,10 +2,12 @@ import { createStore, compose, applyMiddleware, Store } from 'redux';
 
 // importing individual reducer types
 import { AuthState } from './ducks/auth/types';
+import { UserState } from './ducks/user/types';
 
 // store type definitions
 export interface ApplicationState {
   auth: AuthState;
+  user: UserState;
 }
 declare global {
   interface Window {

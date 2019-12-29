@@ -15,13 +15,12 @@ export function* signIn({ payload }: SignInRequestAction) {
       password,
     });
     const { data } = response;
-    console.log('data', data);
     const { token, user } = data;
 
     yield put(signInSuccess(token, user));
     history.push('/dashboard');
   } catch (error) {
-    console.log(error);
+    console.tron.log(error);
     yield put(signFailure());
   }
 }

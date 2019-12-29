@@ -1,6 +1,7 @@
 import { action } from 'typesafe-actions';
 
-import { AuthTypes, UserInfo, AuthActionTypes } from './types';
+import { UserInfo } from '../user/types';
+import { AuthTypes, AuthActionTypes } from './types';
 
 // typescript infers it is a signInRequestAction interface
 export function signInRequest(
