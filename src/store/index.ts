@@ -1,9 +1,11 @@
 import { Store } from 'redux';
+import { persistStore } from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
 
 import createStore, { ApplicationState } from './createStore';
 import rootReducer from './ducks/rootReducer';
 import rootSaga from './ducks/rootSaga';
+import persistReducers from './persistReducers';
 
 const sagaMonitor =
   process.env.NODE_ENV === 'development'
@@ -14,9 +16,13 @@ const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
 
 const middlewares = [sagaMiddleware];
 
-const store: Store<ApplicationState> = createStore(rootReducer, middlewares);
-// const store = createStore(rootReducer, middlewares);
+const persistedRootReducer = persistReducers(rootReducer);
+const store: Store<ApplicationState> = createStore(
+  persistedRootReducer,
+  middlewares
+);
+const persistor = persistStore(store);
 
 sagaMiddleware.run(rootSaga);
 
-export default store;
+export { store, persistor };

@@ -11,6 +11,7 @@ export interface ApplicationState {
 }
 declare global {
   interface Window {
+    // eslint-disable-next-line
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
   }
 }
@@ -18,6 +19,7 @@ declare global {
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // it creates the store and adds the middlewares and enhancers
+// eslint-disable-next-line
 export default (reducers: any, middlewares: any): Store<ApplicationState> => {
   const enhancer =
     process.env.NODE_ENV === 'development'
