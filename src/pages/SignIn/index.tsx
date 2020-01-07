@@ -27,8 +27,7 @@ export default function SignIn() {
   function onSubmit(data: any) {
     const { email, password } = data;
     dispatch(signInRequest(email, password));
-    console.tron.log(data);
-    console.log(data);
+    // console.log(data);
   }
   return (
     <>

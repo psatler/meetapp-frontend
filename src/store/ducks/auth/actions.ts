@@ -18,3 +18,11 @@ export function signInSuccess(token: string, user: UserInfo): AuthActionTypes {
 export function signFailure(): AuthActionTypes {
   return action(AuthTypes.SIGN_FAILURE);
 }
+
+export function signUpRequest(
+  name: string,
+  email: string,
+  password: string
+): AuthActionTypes {
+  return action(AuthTypes.SIGN_UP_REQUEST, { name, email, password });
+}
