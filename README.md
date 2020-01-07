@@ -79,6 +79,7 @@ All the form fields must be validated.
 - [Axios](https://github.com/axios/axios): Promise based HTTP client for the browser and node.js
 - [Typesafe actions](https://github.com/piotrwitek/typesafe-actions): Typesafe utilities designed to reduce types verbosity and complexity in Redux Architecture.
 - [Redux persist](https://github.com/rt2zz/redux-persist): To persist the reducers in a local storage
+- [React Toastify](https://github.com/fkhadra/react-toastify): To display the toast notifications
 
 ---
 

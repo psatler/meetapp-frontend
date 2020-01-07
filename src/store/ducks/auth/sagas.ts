@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 import { AxiosResponse } from 'axios';
 import { all, takeLatest, call, put } from 'redux-saga/effects';
 
@@ -21,6 +23,7 @@ export function* signIn({ payload }: SignInRequestAction) {
     history.push('/dashboard');
   } catch (error) {
     console.tron.log(error);
+    toast.error('Authentication failure. Try again later');
     yield put(signFailure());
   }
 }
