@@ -6,7 +6,13 @@ import { all, takeLatest, call, put } from 'redux-saga/effects';
 import api from '../../../services/api';
 import history from '../../../services/history';
 import { signInSuccess, signFailure } from './actions';
-import { AuthTypes, SignInRequestAction, SignUpRequestAction } from './types';
+import {
+  AuthTypes,
+  SignInRequestAction,
+  SignUpRequestAction,
+  ReduxPersistRehydrateActionType,
+  ReduxPersistRehydrateAction,
+} from './types';
 
 // export function* signIn({ payload }: ReturnType<typeof signInRequest>) {
 export function* signIn({ payload }: SignInRequestAction) {
@@ -18,6 +24,9 @@ export function* signIn({ payload }: SignInRequestAction) {
     });
     const { data } = response;
     const { token, user } = data;
+
+    // adding the token to the header of the requests made via axios
+    api.defaults.headers.Authorization = `Bearer ${token}`;
 
     yield put(signInSuccess(token, user));
     history.push('/dashboard');
@@ -48,7 +57,22 @@ export function* signUp({ payload }: SignUpRequestAction) {
   }
 }
 
+export function setToken({ payload }: ReduxPersistRehydrateAction) {
+  if (!payload) {
+    return;
+  }
+
+  const { token } = payload.auth;
+
+  if (token) {
+    // adding the token to the header of the requests made via axios
+    api.defaults.headers.Authorization = `Bearer ${token}`;
+  }
+}
+
 export default all([
+  // listening to redux-persist action so that we update axios header with a token
+  takeLatest(ReduxPersistRehydrateActionType, setToken), // there no async method, so we don't need the generator
   takeLatest(AuthTypes.SIGN_IN_REQUEST, signIn),
   takeLatest(AuthTypes.SIGN_UP_REQUEST, signUp),
 ]);

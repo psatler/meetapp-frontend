@@ -1,4 +1,4 @@
-import { UserInfo } from '../user/types';
+import { UserInfo, UserState } from '../user/types';
 
 /**
  * Action types
@@ -43,6 +43,14 @@ export type AuthActionTypes =
   | SignInFailureAction
   | SignUpRequestAction;
 
+export const ReduxPersistRehydrateActionType = 'persist/REHYDRATE';
+export interface ReduxPersistRehydrateAction {
+  type: string;
+  payload: {
+    auth: AuthState;
+    user: UserState;
+  };
+}
 /**
  * Data types: the format of the auth stored
  */
