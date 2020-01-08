@@ -93,6 +93,8 @@ All the form fields must be validated.
 
 - Fixing some typescript typing errors regarding [JSX element type 'Component' does not have any construct or call signatures. [2604]](https://stackoverflow.com/questions/53452966/typescript-3-jsx-element-type-component-does-not-have-any-construct-or-call-s?rq=1) when creating private routes
 
+- [Adorable Avatars](http://avatars.adorable.io/) is a great source to get images to use as placeholders while crafting the layout of the pages
+
 ---
 
 ### License
