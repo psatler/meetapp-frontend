@@ -1,3 +1,38 @@
+export enum UpdateUserTypes {
+  UPDATE_PROFILE_REQUEST = '@user/UPDATE_PROFILE_REQUEST',
+  UPDATE_PROFILE_SUCCESS = '@user/UPDATE_PROFILE_SUCCESS',
+  UPDATE_PROFILE_FAILURE = '@user/UPDATE_PROFILE_FAILURE',
+}
+
+export interface UpdateProfileRequestAction {
+  type: UpdateUserTypes.UPDATE_PROFILE_REQUEST;
+  payload: ProfileFormFieldTypes;
+}
+
+export interface UpdateProfileSuccessAction {
+  type: UpdateUserTypes.UPDATE_PROFILE_SUCCESS;
+  payload: {
+    profile: UserInfo;
+  };
+}
+
+export interface UpdateProfileFailureAction {
+  type: UpdateUserTypes.UPDATE_PROFILE_FAILURE;
+}
+
+export type UserActionTypes =
+  | UpdateProfileRequestAction
+  | UpdateProfileSuccessAction
+  | UpdateProfileFailureAction;
+
+export interface ProfileFormFieldTypes {
+  name: string;
+  email: string;
+  oldPassword?: string;
+  password?: string;
+  confirmPassword?: string;
+}
+
 export interface UserInfo {
   id: number;
   name: string;

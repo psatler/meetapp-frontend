@@ -1,10 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 
 import { ApplicationState } from '../../store/createStore';
+import { updateProfileRequest } from '../../store/ducks/user/actions';
 import { Container } from './styles';
 
 const schema = Yup.object().shape({
@@ -18,17 +19,21 @@ const schema = Yup.object().shape({
 });
 
 export default function Profile() {
+  const dispatch = useDispatch();
+
   const profile = useSelector(
     (state: ApplicationState) => state.user.profile
   ) as object;
 
-  function onSubmit() {
-    return {};
+  function onSubmit(data: any) {
+    console.log('data', data);
+
+    dispatch(updateProfileRequest(data));
   }
 
   return (
     <Container>
-      <Form initialData={profile} schema={schema} onSubmit={onSubmit}>
+      <Form initialData={profile} onSubmit={onSubmit}>
         <Input name="name" type="text" placeholder="Insert your name" />
         <Input name="email" type="email" placeholder="Insert your email" />
 
