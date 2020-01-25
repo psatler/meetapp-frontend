@@ -9,6 +9,7 @@ export enum AuthTypes {
   SIGN_IN_SUCCESS = '@auth/SIGN_IN_SUCCESS',
   SIGN_FAILURE = '@auth/SIGN_FAILURE',
   SIGN_UP_REQUEST = '@auth/SIGN_UP_REQUEST',
+  SIGN_OUT_REQUEST = '@auth/SIGN_OUT_REQUEST',
 }
 
 export interface SignInRequestAction {
@@ -28,6 +29,10 @@ export interface SignInFailureAction {
   type: AuthTypes.SIGN_FAILURE;
 }
 
+export interface SignOutAction {
+  type: AuthTypes.SIGN_OUT_REQUEST;
+}
+
 export interface SignUpRequestAction {
   type: AuthTypes.SIGN_UP_REQUEST;
   payload: {
@@ -41,7 +46,8 @@ export type AuthActionTypes =
   | SignInRequestAction
   | SignInSuccessAction
   | SignInFailureAction
-  | SignUpRequestAction;
+  | SignUpRequestAction
+  | SignOutAction;
 
 export const ReduxPersistRehydrateActionType = 'persist/REHYDRATE';
 export interface ReduxPersistRehydrateAction {

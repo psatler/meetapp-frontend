@@ -7,9 +7,11 @@ const INITIAL_STATE: UserState = {
   profile: null,
 };
 
-const userReducer: Reducer<UserState, AuthActionTypes> = (
+type UserActionsTypes = AuthActionTypes | UserActionTypes;
+
+const userReducer: Reducer<UserState, UserActionsTypes> = (
   state = INITIAL_STATE,
-  action: AuthActionTypes | UserActionTypes
+  action: UserActionsTypes
 ) => {
   switch (action.type) {
     case AuthTypes.SIGN_IN_SUCCESS: {
@@ -18,6 +20,12 @@ const userReducer: Reducer<UserState, AuthActionTypes> = (
       return {
         ...state,
         profile,
+      };
+    }
+    case AuthTypes.SIGN_OUT_REQUEST: {
+      return {
+        ...state,
+        profile: null,
       };
     }
 

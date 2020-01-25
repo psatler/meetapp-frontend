@@ -35,6 +35,13 @@ const authReducer: Reducer<AuthState, AuthActionTypes> = (
         loading: false,
       };
     }
+    case AuthTypes.SIGN_OUT_REQUEST: {
+      return {
+        ...state,
+        token: '',
+        loggedIn: false,
+      };
+    }
 
     default:
       return state;

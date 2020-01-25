@@ -26,3 +26,8 @@ export function signUpRequest(
 ): AuthActionTypes {
   return action(AuthTypes.SIGN_UP_REQUEST, { name, email, password });
 }
+
+// this action is listened directly by the reducer, and not only the sagas
+export function signOutRequest(): AuthActionTypes {
+  return action(AuthTypes.SIGN_OUT_REQUEST);
+}

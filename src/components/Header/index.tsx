@@ -1,13 +1,19 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import logo from '../../assets/logo.svg';
 import { ApplicationState } from '../../store/createStore';
+import { signOutRequest } from '../../store/ducks/auth/actions';
 import { Container, Content, Profile } from './styles';
 
 export default function Header() {
+  const dispatch = useDispatch();
   const profile = useSelector((state: ApplicationState) => state.user.profile);
+
+  function handleLogOut() {
+    dispatch(signOutRequest());
+  }
 
   return (
     <Container>
@@ -32,7 +38,9 @@ export default function Header() {
               alt={profile?.name || ''}
             />
 
-            <button type="button">Log Out</button>
+            <button type="button" onClick={handleLogOut}>
+              Log Out
+            </button>
           </Profile>
         </aside>
       </Content>

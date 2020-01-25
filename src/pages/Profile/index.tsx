@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { Form, Input } from '@rocketseat/unform';
-import * as Yup from 'yup';
+// import * as Yup from 'yup';
 
 import { ApplicationState } from '../../store/createStore';
 import { updateProfileRequest } from '../../store/ducks/user/actions';

@@ -70,9 +70,14 @@ export function setToken({ payload }: ReduxPersistRehydrateAction) {
   }
 }
 
+export function signOut() {
+  history.push('/');
+}
+
 export default all([
   // listening to redux-persist action so that we update axios header with a token
   takeLatest(ReduxPersistRehydrateActionType, setToken), // there no async method, so we don't need the generator
   takeLatest(AuthTypes.SIGN_IN_REQUEST, signIn),
   takeLatest(AuthTypes.SIGN_UP_REQUEST, signUp),
+  takeLatest(AuthTypes.SIGN_OUT_REQUEST, signOut),
 ]);
