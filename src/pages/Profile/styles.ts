@@ -2,7 +2,7 @@ import { darken } from 'polished';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  max-width: 600px;
+  max-width: 800px;
   margin: 50px auto;
 
   form {
@@ -68,7 +68,8 @@ export const Container = styled.div`
       padding: 0 15px;
       margin: 5px 0 0;
       height: 44px;
-      background: #f94d6a;
+      /* background: #f94d6a; */
+      background: #d44059;
       font-weight: bold;
       color: #fff;
       border: 0;
