@@ -95,6 +95,12 @@ All the form fields must be validated.
 
 - [Adorable Avatars](http://avatars.adorable.io/) is a great source to get images to use as placeholders while crafting the layout of the pages
 
+- A great [React Typescript Cheatsheet](https://github.com/typescript-cheatsheets/react-typescript-cheatsheet) for recipes and use cases of TS with React
+
+- Redux [usage with Typescript](https://redux.js.org/recipes/usage-with-typescript/)
+
+- [Typescript Deep Dive](https://basarat.gitbook.io/typescript/) book
+
 ---
 
 ### License
