@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, UpperSection, MeetupsList } from './styles';
+import { Container, UpperSection, Meetup } from './styles';
 
 export default function Dashboard() {
   return (
@@ -10,32 +10,32 @@ export default function Dashboard() {
         <button type="button">New Meetup</button>
       </UpperSection>
 
-      <MeetupsList>
-        <li>
+      <ul>
+        <Meetup past>
           <strong>React Native meetup</strong>
           <span>March 3rd at 20h</span>
-        </li>
-        <li>
+        </Meetup>
+        <Meetup>
           <strong>React Native meetup</strong>
           <span>March 3rd atdasd asdasdfasdfasfsd 20h</span>
-        </li>
-        <li>
+        </Meetup>
+        <Meetup past>
           <strong>React Native meetup</strong>
           <span>March 3rd at 20h</span>
-        </li>
-        <li>
+        </Meetup>
+        <Meetup>
           <strong>React Native meetup</strong>
           <span>March 3rd at 20h</span>
-        </li>
-        <li>
+        </Meetup>
+        <Meetup>
           <strong>React Native meetup</strong>
           <span>March 3rd at 20h</span>
-        </li>
-        <li>
+        </Meetup>
+        <Meetup>
           <strong>React Native meetup</strong>
           <span>March 3rd at 20h</span>
-        </li>
-      </MeetupsList>
+        </Meetup>
+      </ul>
     </Container>
   );
 }

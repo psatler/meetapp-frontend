@@ -1,5 +1,5 @@
 import { darken } from 'polished';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   max-width: 900px;
@@ -38,32 +38,43 @@ export const UpperSection = styled.section`
       background: ${darken(0.08, '#f94d6a')};
     }
   }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
-export const MeetupsList = styled.ul`
+interface MeetupStyledProps {
+  past?: boolean;
+}
+
+export const Meetup = styled.li<MeetupStyledProps>`
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 8px 0 8px 0;
+  /* background: #402944; */
 
-  li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 5px 0 5px 0;
-    /* background: #402944; */
-    background: linear-gradient(-60deg, #402944, #2a2332);
-    border-radius: 30px;
+  ${props =>
+    props.past
+      ? css`
+          opacity: 0.5;
+        `
+      : css`background: linear-gradient(-60deg, #402944, #2a2332)}`}
 
-    strong {
-      display: inline-block;
-      font-size: 1.2rem;
-      color: white;
-      margin: 15px;
-    }
+  border-radius: 30px;
 
-    span {
-      font-size: 1rem;
-      color: #979797;
-      margin: 15px;
-    }
+  strong {
+    display: inline-block;
+    font-size: 1.2rem;
+    color: white;
+    margin: 15px;
+  }
+
+  span {
+    font-size: 1rem;
+    color: #979797;
+    margin: 15px;
   }
 `;
