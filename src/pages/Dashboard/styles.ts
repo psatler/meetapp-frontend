@@ -21,7 +21,10 @@ export const UpperSection = styled.section`
     margin-left: 5px;
   }
 
-  button {
+  a {
+    display: flex;
+    align-items: center;
+
     background: #d44059;
     margin: 5px 0 0;
     height: 44px;
@@ -54,6 +57,9 @@ export const Meetup = styled.li<MeetupStyledProps>`
   align-items: center;
   justify-content: space-between;
   margin: 8px 0 8px 0;
+
+  cursor: pointer;
+
   /* background: #402944; */
 
   ${props =>

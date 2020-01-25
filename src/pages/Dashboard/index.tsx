@@ -1,40 +1,77 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
+import { format, parseISO } from 'date-fns';
+
+import api from '../../services/api';
+import history from '../../services/history';
+// import { UserInfo } from '../../store/ducks/user/types';
 import { Container, UpperSection, Meetup } from './styles';
 
+interface DataResponse {
+  id: number;
+  past: boolean;
+  title: string;
+  description: string;
+  location: string;
+  date: string;
+  dateFormatted: string;
+  banner: BannerInfo;
+  // organizer: UserInfo;
+}
+
+interface BannerInfo {
+  id: number;
+  url: string;
+  name: string;
+  path: string;
+}
+
 export default function Dashboard() {
+  const [meetupList, setMeetupList] = useState<DataResponse[]>([]);
+
+  useEffect(() => {
+    async function fetchOrganizerMeetups() {
+      const response = await api.get('organizer');
+
+      const meetups: DataResponse[] = response.data;
+
+      const formattedMeetups = meetups.map(item => {
+        const dateFormatted = format(parseISO(item.date), "MMMM dd 'at' HH:mm");
+        return {
+          ...item,
+          dateFormatted,
+        };
+      });
+
+      setMeetupList(formattedMeetups);
+    }
+
+    fetchOrganizerMeetups();
+  }, []);
+
+  function goToMeetupDetailsPage(meetupId: number) {
+    history.push(`/meetup/${meetupId}`);
+  }
+
   return (
     <Container>
       <UpperSection>
         <strong>My meetups</strong>
-        <button type="button">New Meetup</button>
+        <Link to="/new">New Meetup</Link>
       </UpperSection>
 
       <ul>
-        <Meetup past>
-          <strong>React Native meetup</strong>
-          <span>March 3rd at 20h</span>
-        </Meetup>
-        <Meetup>
-          <strong>React Native meetup</strong>
-          <span>March 3rd atdasd asdasdfasdfasfsd 20h</span>
-        </Meetup>
-        <Meetup past>
-          <strong>React Native meetup</strong>
-          <span>March 3rd at 20h</span>
-        </Meetup>
-        <Meetup>
-          <strong>React Native meetup</strong>
-          <span>March 3rd at 20h</span>
-        </Meetup>
-        <Meetup>
-          <strong>React Native meetup</strong>
-          <span>March 3rd at 20h</span>
-        </Meetup>
-        <Meetup>
-          <strong>React Native meetup</strong>
-          <span>March 3rd at 20h</span>
-        </Meetup>
+        {meetupList.map(meetup => (
+          <Meetup
+            key={meetup.id}
+            past={meetup.past}
+            onClick={() => goToMeetupDetailsPage(meetup.id)}
+          >
+            <strong> {meetup.title} </strong>
+            <span> {meetup.dateFormatted} </span>
+          </Meetup>
+        ))}
       </ul>
     </Container>
   );

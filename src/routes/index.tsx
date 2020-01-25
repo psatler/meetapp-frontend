@@ -3,7 +3,7 @@ import { Switch } from 'react-router-dom';
 
 // routes accessed after authorization
 import Dashboard from '../pages/Dashboard';
-import Details from '../pages/Details';
+import MeetupDetails from '../pages/MeetupDetails';
 import NewEdit from '../pages/NewEdit';
 import NoMatch from '../pages/NoMatch';
 import Profile from '../pages/Profile';
@@ -19,7 +19,7 @@ export default function Routes() {
       <Route path="/register" component={SignUp} />
 
       <Route path="/dashboard" component={Dashboard} isPrivate />
-      <Route path="/details" component={Details} isPrivate />
+      <Route path="/meetup/:id" component={MeetupDetails} isPrivate />
       <Route path="/profile" component={Profile} isPrivate />
       <Route path="/new" component={NewEdit} isPrivate />
 
