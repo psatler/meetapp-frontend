@@ -28,6 +28,8 @@ export type UserActionTypes =
 export interface ProfileFormFieldTypes {
   name: string;
   email: string;
+  avatar_id?: string;
+  banner_image_id?: string;
   oldPassword?: string;
   password?: string;
   confirmPassword?: string;

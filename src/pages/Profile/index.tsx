@@ -6,17 +6,18 @@ import * as Yup from 'yup';
 
 import { ApplicationState } from '../../store/createStore';
 import { updateProfileRequest } from '../../store/ducks/user/actions';
+import ImageINput from '../ImageInput';
 import { Container } from './styles';
 
-const schema = Yup.object().shape({
-  name: Yup.string().required('Name is required'),
-  email: Yup.string()
-    .email('Insert a valid email')
-    .required('An email is required!'),
-  // password: Yup.string()
-  //   .min(6, 'At least 6 characters')
-  //   .required('A password is required!'),
-});
+// const schema = Yup.object().shape({
+//   name: Yup.string().required('Name is required'),
+//   email: Yup.string()
+//     .email('Insert a valid email')
+//     .required('An email is required!'),
+//   password: Yup.string()
+//     .min(6, 'At least 6 characters')
+//     .required('A password is required!'),
+// });
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ export default function Profile() {
   ) as object;
 
   function onSubmit(data: any) {
-    console.log('data', data);
+    console.log('data Profile component', data);
 
     dispatch(updateProfileRequest(data));
   }
@@ -34,6 +35,8 @@ export default function Profile() {
   return (
     <Container>
       <Form initialData={profile} onSubmit={onSubmit}>
+        <ImageINput name="avatar_id" inputId="avatar_id" fieldToGet="avatar" />
+
         <Input name="name" type="text" placeholder="Insert your name" />
         <Input name="email" type="email" placeholder="Insert your email" />
 

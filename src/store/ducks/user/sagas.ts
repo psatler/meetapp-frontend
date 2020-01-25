@@ -9,10 +9,18 @@ import { UpdateUserTypes, UpdateProfileRequestAction } from './types';
 
 export function* updateProfile({ payload }: UpdateProfileRequestAction) {
   try {
-    const { name, email, ...rest } = payload;
+    const { name, email, avatar_id, banner_image_id, ...rest } = payload; // eslint-disable-line @typescript-eslint/camelcase
+
+    console.log('payload', payload);
 
     // if we have pieces of information about an old password, we add the new password info
-    const profile = { name, email, ...(rest.oldPassword ? rest : {}) };
+    const profile = {
+      name,
+      email,
+      avatar_id, // eslint-disable-line @typescript-eslint/camelcase
+      banner_image_id, // eslint-disable-line @typescript-eslint/camelcase
+      ...(rest.oldPassword ? rest : {}),
+    };
 
     const response: AxiosResponse = yield call(api.put, 'users', profile);
 
