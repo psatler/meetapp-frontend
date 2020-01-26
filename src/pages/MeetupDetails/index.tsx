@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { RouteComponentProps, useParams, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { Form, Input } from '@rocketseat/unform';
-
+import MeetupForm from '../../components/MeetupForm';
 import api from '../../services/api';
 import { Container, UpperSection } from './styles';
 
@@ -45,30 +44,7 @@ export default function MeetupDetails({ location }: AllProps) {
         </div>
       </UpperSection>
 
-      {/* <Form initialData={meetup} onSubmit={onSubmit}>
-        <ImageINput name="avatar_id" inputId="avatar_id" fieldToGet="avatar" />
-
-        <Input name="name" type="text" placeholder="Insert your name" />
-        <Input name="email" type="email" placeholder="Insert your email" />
-
-        <hr />
-        <Input
-          name="oldPassword"
-          type="oldPassword"
-          placeholder="Your secret password"
-        />
-        <Input
-          name="password"
-          type="password"
-          placeholder="Your new password"
-        />
-        <Input
-          name="confirmPassword"
-          type="confirmPassword"
-          placeholder="Confirm your new password"
-        />
-        <button type="submit">Save profile changes</button>
-      </Form> */}
+      <MeetupForm />
     </Container>
   );
 }
