@@ -4,9 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 // import * as Yup from 'yup';
 
+import ImageInput from '../../components/ImageInput';
 import { ApplicationState } from '../../store/createStore';
 import { updateProfileRequest } from '../../store/ducks/user/actions';
-import ImageINput from '../ImageInput';
 import { Container } from './styles';
 
 // const schema = Yup.object().shape({
@@ -35,7 +35,7 @@ export default function Profile() {
   return (
     <Container>
       <Form initialData={profile} onSubmit={onSubmit}>
-        <ImageINput name="avatar_id" inputId="avatar_id" fieldToGet="avatar" />
+        <ImageInput name="avatar_id" inputId="avatar_id" fieldToGet="avatar" />
 
         <Input name="name" type="text" placeholder="Insert your name" />
         <Input name="email" type="email" placeholder="Insert your email" />
