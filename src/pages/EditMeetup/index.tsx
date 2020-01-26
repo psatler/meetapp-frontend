@@ -2,6 +2,6 @@ import React from 'react';
 
 // import { Container } from './styles';
 
-export default function NewEdit() {
-  return <div>New / Edit </div>;
+export default function EditMeetup() {
+  return <div>Edit meetup</div>;
 }

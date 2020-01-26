@@ -50,8 +50,11 @@ export default function Dashboard() {
     fetchOrganizerMeetups();
   }, []);
 
-  function goToMeetupDetailsPage(meetupId: number) {
-    history.push(`/meetup/${meetupId}`);
+  function goToMeetupDetailsPage(meetupSelected: DataResponse) {
+    history.push(`/meetup/${meetupSelected.id}`, {
+      meetupSelected,
+      fromDashboard: true,
+    });
   }
 
   return (
@@ -66,7 +69,7 @@ export default function Dashboard() {
           <Meetup
             key={meetup.id}
             past={meetup.past}
-            onClick={() => goToMeetupDetailsPage(meetup.id)}
+            onClick={() => goToMeetupDetailsPage(meetup)}
           >
             <strong> {meetup.title} </strong>
             <span> {meetup.dateFormatted} </span>
