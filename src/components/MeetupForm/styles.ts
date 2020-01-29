@@ -1,6 +1,23 @@
-import { Form } from '@rocketseat/unform';
+import { Form, Input } from '@rocketseat/unform';
 import { darken } from 'polished';
 import styled from 'styled-components';
+
+export const TextArea = styled(Input).attrs(props => ({
+  cols: 100,
+  rows: 5,
+}))`
+  background: #271e2d;
+  border: 0;
+  border-radius: 4px;
+  /* height: 44px; */
+  padding: 0 15px;
+  color: #fff;
+  margin: 0 0 10px;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+`;
 
 export const FormContainer = styled(Form)`
   display: flex;
@@ -19,6 +36,10 @@ export const FormContainer = styled(Form)`
     &::placeholder {
       color: rgba(255, 255, 255, 0.7);
     }
+  }
+
+  textarea {
+    padding-top: 10px;
   }
 
   span {

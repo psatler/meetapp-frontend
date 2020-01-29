@@ -6,26 +6,8 @@ import { format, parseISO } from 'date-fns';
 import api from '../../services/api';
 import history from '../../services/history';
 // import { UserInfo } from '../../store/ducks/user/types';
+import { DataResponse } from '../../store/ducks/meetup/types';
 import { Container, UpperSection, Meetup } from './styles';
-
-interface DataResponse {
-  id: number;
-  past: boolean;
-  title: string;
-  description: string;
-  location: string;
-  date: string;
-  dateFormatted: string;
-  banner: BannerInfo;
-  // organizer: UserInfo;
-}
-
-interface BannerInfo {
-  id: number;
-  url: string;
-  name: string;
-  path: string;
-}
 
 export default function Dashboard() {
   const [meetupList, setMeetupList] = useState<DataResponse[]>([]);

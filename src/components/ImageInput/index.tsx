@@ -9,9 +9,14 @@ interface OwnProps {
   name: string;
   inputId: string;
   fieldToGet: string;
+  isMeetupBanner?: boolean;
 }
 
-export default function ImageInput({ inputId, fieldToGet }: OwnProps) {
+export default function ImageInput({
+  inputId,
+  fieldToGet,
+  isMeetupBanner,
+}: OwnProps) {
   const ref = useRef() as React.RefObject<HTMLInputElement>;
   const { defaultValue, registerField } = useField(fieldToGet);
 
@@ -41,7 +46,7 @@ export default function ImageInput({ inputId, fieldToGet }: OwnProps) {
   }
 
   return (
-    <Container>
+    <Container isMeetupBanner={isMeetupBanner}>
       <label htmlFor={inputId}>
         <img
           src={

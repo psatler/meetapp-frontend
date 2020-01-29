@@ -1,6 +1,10 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+interface ContainerStyledProps {
+  isMeetupBanner?: boolean;
+}
+
+export const Container = styled.div<ContainerStyledProps>`
   align-self: center;
   margin-bottom: 30px;
 
@@ -12,12 +16,25 @@ export const Container = styled.div`
     }
 
     img {
-      height: 120px;
-      width: 120px;
-      border-radius: 50%;
-      border: 3px solid rgba(255, 255, 255, 0.3);
-      /* insert a background while the image didn't load */
-      background: #eee;
+      ${props =>
+        props.isMeetupBanner
+          ? css`
+              height: 300px;
+              width: 100%;
+              /* width: 120px; */
+              border: 3px solid rgba(255, 255, 255, 0.3);
+              /* insert a background while the image didn't load */
+              background: #eee;
+            `
+          : css`
+              height: 120px;
+              width: 120px;
+              border-radius: 50%;
+              /* width: 120px; */
+              border: 3px solid rgba(255, 255, 255, 0.3);
+              /* insert a background while the image didn't load */
+              background: #eee;
+            `}
     }
 
     input {

@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 
 import MeetupForm from '../../components/MeetupForm';
 import api from '../../services/api';
+import { DataResponse } from '../../store/ducks/meetup/types';
 import { Container, UpperSection } from './styles';
 
 type AllProps = RouteComponentProps;
@@ -12,7 +13,7 @@ export default function MeetupDetails({ location }: AllProps) {
   const { id } = useParams();
   const meetupSelected = location.state ? location.state.meetupSelected : null;
   const fromDashboard = location.state ? location.state.fromDashboard : false;
-  const [meetup, setMeetup] = useState(meetupSelected || []);
+  const [meetup, setMeetup] = useState<DataResponse>(meetupSelected || []);
 
   useEffect(() => {
     async function fetchMeetupById(meetupId: string) {
@@ -44,7 +45,7 @@ export default function MeetupDetails({ location }: AllProps) {
         </div>
       </UpperSection>
 
-      <MeetupForm />
+      <MeetupForm meetupSelected={meetup} />
     </Container>
   );
 }
