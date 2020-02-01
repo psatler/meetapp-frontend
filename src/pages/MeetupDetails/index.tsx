@@ -45,9 +45,18 @@ export default function MeetupDetails({ location }: AllProps) {
       {meetup && (
         <>
           <UpperSection>
-            <strong>Meetup de React Native</strong>
+            <strong>{meetup.title}</strong>
             <div>
-              <Link to={`/meetup/${id}/edit`}>Edit</Link>
+              <Link
+                to={{
+                  pathname: `/meetup/${id}/edit`,
+                  state: {
+                    meetupToEdit: meetup,
+                  },
+                }}
+              >
+                Edit
+              </Link>
               <button type="button">Delete</button>
             </div>
           </UpperSection>

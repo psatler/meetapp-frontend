@@ -14,7 +14,7 @@ export const Container = styled.div`
 
   strong {
     color: #fff;
-    margin-top: 5px;
+    /* margin-top: 5px; */
   }
 `;
 
