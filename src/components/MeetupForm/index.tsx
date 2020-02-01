@@ -22,7 +22,7 @@ export default function MeetupForm({ meetupSelected }: OwnProps) {
   >;
   const { fieldName, registerField } = useField('date');
   const [selected, setSelected] = useState(
-    new Date(meetupSelected.date) || new Date()
+    (meetupSelected && new Date(meetupSelected.date)) || new Date()
   );
   console.log('meetupSelected', meetupSelected);
 

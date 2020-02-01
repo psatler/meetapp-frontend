@@ -7,6 +7,15 @@ export const Container = styled.div`
 
   display: flex;
   flex-direction: column;
+
+  h2 {
+    color: #fff;
+  }
+
+  strong {
+    color: #fff;
+    margin-top: 5px;
+  }
 `;
 
 export const UpperSection = styled.section`
