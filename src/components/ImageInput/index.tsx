@@ -10,12 +10,14 @@ interface OwnProps {
   inputId: string;
   fieldToGet: string;
   isMeetupBanner?: boolean;
+  disableInputs?: boolean;
 }
 
 export default function ImageInput({
   inputId,
   fieldToGet,
   isMeetupBanner,
+  disableInputs,
 }: OwnProps) {
   const ref = useRef() as React.RefObject<HTMLInputElement>;
   const { defaultValue, registerField } = useField(fieldToGet);
@@ -46,7 +48,7 @@ export default function ImageInput({
   }
 
   return (
-    <Container isMeetupBanner={isMeetupBanner}>
+    <Container isMeetupBanner={isMeetupBanner} disableInputs={disableInputs}>
       <label htmlFor={inputId}>
         <img
           src={
@@ -62,6 +64,7 @@ export default function ImageInput({
           data-file={file}
           onChange={handleChange}
           ref={ref}
+          disabled={disableInputs}
         />
       </label>
     </Container>

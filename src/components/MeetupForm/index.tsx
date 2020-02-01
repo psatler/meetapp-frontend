@@ -7,15 +7,20 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 import { DataResponse } from '../../store/ducks/meetup/types';
 import ImageInput from '../ImageInput';
+
 // import * as Yup from 'yup';
 
 import { FormContainer, TextArea } from './styles';
 
 interface OwnProps {
   meetupSelected: DataResponse;
+  disableInputs?: boolean;
 }
 
-export default function MeetupForm({ meetupSelected }: OwnProps) {
+export default function MeetupForm({
+  meetupSelected,
+  disableInputs,
+}: OwnProps) {
   // const ref = useRef(null) as React.RefObject<ReactDatePicker>;
   const ref = useRef(null) as React.RefObject<
     ReactDatePicker & HTMLInputElement
@@ -53,13 +58,20 @@ export default function MeetupForm({ meetupSelected }: OwnProps) {
         inputId="banner_image_id"
         fieldToGet="banner"
         isMeetupBanner
+        disableInputs={disableInputs}
       />
 
-      <Input name="title" type="text" placeholder="Meetup title" />
+      <Input
+        name="title"
+        type="text"
+        placeholder="Meetup title"
+        disabled={disableInputs}
+      />
       <TextArea
         multiline
         name="description"
         placeholder="Complete description about the meetup"
+        disabled={disableInputs}
       />
 
       <ReactDatePicker
@@ -67,6 +79,7 @@ export default function MeetupForm({ meetupSelected }: OwnProps) {
         selected={selected}
         onChange={(date: Date) => setSelected(date)}
         ref={ref}
+        disabled={disableInputs}
       />
       <Input
         name={fieldName}
@@ -75,9 +88,14 @@ export default function MeetupForm({ meetupSelected }: OwnProps) {
         hidden
         readOnly
       />
-      <Input name="location" type="type" placeholder="Location of the event" />
+      <Input
+        name="location"
+        type="type"
+        placeholder="Location of the event"
+        disabled={disableInputs}
+      />
 
-      <button type="submit">Save meetup changes</button>
+      {!disableInputs && <button type="submit">Save meetup changes</button>}
     </FormContainer>
   );
 }

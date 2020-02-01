@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 interface ContainerStyledProps {
   isMeetupBanner?: boolean;
+  disableInputs?: boolean;
 }
 
 export const Container = styled.div<ContainerStyledProps>`
@@ -9,11 +10,15 @@ export const Container = styled.div<ContainerStyledProps>`
   margin-bottom: 30px;
 
   label {
-    cursor: pointer;
+    ${props =>
+      !props.disableInputs &&
+      css`
+        cursor: pointer;
 
-    &:hover {
-      opacity: 0.7;
-    }
+        &:hover {
+          opacity: 0.7;
+        }
+      `}
 
     img {
       ${props =>

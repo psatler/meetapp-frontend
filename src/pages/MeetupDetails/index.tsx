@@ -52,7 +52,7 @@ export default function MeetupDetails({ location }: AllProps) {
             </div>
           </UpperSection>
 
-          <MeetupForm meetupSelected={meetup} />
+          <MeetupForm meetupSelected={meetup} disableInputs />
         </>
       )}
 
