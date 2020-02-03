@@ -1,7 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
 import ReactDatePicker from 'react-datepicker';
+import { toast } from 'react-toastify';
 
 import { Input, useField } from '@rocketseat/unform';
+import { format } from 'date-fns';
+
+import api from '../../services/api';
+import history from '../../services/history';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -29,10 +34,8 @@ export default function MeetupForm({
   const [selected, setSelected] = useState(
     (meetupSelected && new Date(meetupSelected.date)) || new Date()
   );
-  console.log('meetupSelected', meetupSelected);
+  const [loading, setLoading] = useState(false);
 
-  console.log('selected', selected);
-  console.log('fieldName', fieldName);
   useEffect(() => {
     if (ref.current) {
       registerField({
@@ -46,13 +49,53 @@ export default function MeetupForm({
     }
   }, [ref.current, fieldName]); // eslint-disable-line
 
-  function onSubmit(data: any) {
-    console.log('data', data);
-    return {};
+  async function onSubmit(data: any) {
+    try {
+      setLoading(true);
+      const {
+        title,
+        description,
+        location,
+        date,
+        banner_image_id, // eslint-disable-line @typescript-eslint/camelcase
+      } = data;
+
+      const formattedDate = format(
+        new Date(date),
+        "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+      );
+      // "2020-02-27T21:00:00.000Z",
+
+      console.log('formattedDate', formattedDate);
+
+      const updatedMeetup = {
+        title,
+        description,
+        location,
+        date: formattedDate,
+        banner_image_id, // eslint-disable-line @typescript-eslint/camelcase
+      };
+      console.log('updatedMeetup', updatedMeetup);
+
+      await api.put(`meetups/${meetupSelected.id}`, updatedMeetup);
+      setLoading(false);
+      toast.success(`Meetup '${title}' was updated!`);
+      history.goBack();
+    } catch (error) {
+      console.log('error updatedMeetup', error);
+      toast.error(`Meetup was not updated. Try again later!`);
+      setLoading(false);
+    }
   }
 
+  console.log('loading', loading);
+
   return (
-    <FormContainer initialData={meetupSelected} onSubmit={onSubmit}>
+    <FormContainer
+      initialData={meetupSelected}
+      onSubmit={onSubmit}
+      loading={loading}
+    >
       <ImageInput
         name="banner_image_id"
         inputId="banner_image_id"
@@ -95,7 +138,11 @@ export default function MeetupForm({
         disabled={disableInputs}
       />
 
-      {!disableInputs && <button type="submit">Save meetup changes</button>}
+      {!disableInputs && (
+        <button type="submit">
+          {loading ? 'Saving changes...' : 'Save meetup changes'}{' '}
+        </button>
+      )}
     </FormContainer>
   );
 }

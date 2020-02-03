@@ -7,7 +7,7 @@ import { Container } from './styles';
 
 export default function EditMeetup({ location }: RouteComponentProps) {
   const { id } = useParams();
-  const meetup: DataResponse = location.state.meetupToEdit;
+  const meetup: DataResponse = location.state?.meetupToEdit;
 
   if (!meetup) {
     return <Redirect to={`/meetup/${id}`} />;

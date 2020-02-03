@@ -1,6 +1,6 @@
 import { Form, Input } from '@rocketseat/unform';
 import { darken } from 'polished';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const TextArea = styled(Input).attrs(props => ({
   cols: 100,
@@ -19,7 +19,11 @@ export const TextArea = styled(Input).attrs(props => ({
   }
 `;
 
-export const FormContainer = styled(Form)`
+interface FormContainerProps {
+  loading: boolean;
+}
+
+export const FormContainer = styled(Form)<FormContainerProps>`
   display: flex;
   flex-direction: column;
   margin-top: 30px;
@@ -95,6 +99,12 @@ export const FormContainer = styled(Form)`
     font-size: 16px;
     /* to make the transition smoother */
     transition: background 0.5s;
+
+    cursor: ${props =>
+      props.loading &&
+      css`
+        cursor: not-allowed;
+      `};
 
     &:hover {
       background: ${darken(0.08, '#f94d6a')};
