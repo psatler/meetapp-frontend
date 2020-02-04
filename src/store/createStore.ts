@@ -2,12 +2,14 @@ import { createStore, compose, applyMiddleware, Store } from 'redux';
 
 // importing individual reducer types
 import { AuthState } from './ducks/auth/types';
+import { MeetupState } from './ducks/meetup/types';
 import { UserState } from './ducks/user/types';
 
 // store type definitions
 export interface ApplicationState {
   auth: AuthState;
   user: UserState;
+  meetups: MeetupState;
 }
 declare global {
   interface Window {

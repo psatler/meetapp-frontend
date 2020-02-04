@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { format, parseISO } from 'date-fns';
@@ -6,11 +7,18 @@ import { format, parseISO } from 'date-fns';
 import api from '../../services/api';
 import history from '../../services/history';
 // import { UserInfo } from '../../store/ducks/user/types';
+import { ApplicationState } from '../../store/createStore';
+import { loadMeetups } from '../../store/ducks/meetup/actions';
 import { DataResponse } from '../../store/ducks/meetup/types';
 import { Container, UpperSection, Meetup } from './styles';
 
 export default function Dashboard() {
-  const [meetupList, setMeetupList] = useState<DataResponse[]>([]);
+  const dispatch = useDispatch();
+
+  const meetupList = useSelector(
+    (state: ApplicationState) => state.meetups.meetupsList
+  );
+  // const [meetupList, setMeetupList] = useState<DataResponse[]>([]);
 
   useEffect(() => {
     async function fetchOrganizerMeetups() {
@@ -26,11 +34,13 @@ export default function Dashboard() {
         };
       });
 
-      setMeetupList(formattedMeetups);
+      dispatch(loadMeetups(formattedMeetups));
+
+      // setMeetupList(formattedMeetups);
     }
 
     fetchOrganizerMeetups();
-  }, []);
+  }, [dispatch]);
 
   function goToMeetupDetailsPage(meetupSelected: DataResponse) {
     history.push(`/meetup/${meetupSelected.id}`, {

@@ -1,44 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { RouteComponentProps, useParams, Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useParams, Link } from 'react-router-dom';
 
 import MeetupForm from '../../components/MeetupForm';
-import api from '../../services/api';
-import { DataResponse } from '../../store/ducks/meetup/types';
+import history from '../../services/history';
+import { ApplicationState } from '../../store/createStore';
 import { Container, UpperSection } from './styles';
 
-type AllProps = RouteComponentProps;
-
-export default function MeetupDetails({ location }: AllProps) {
+export default function MeetupDetails() {
   const { id } = useParams();
-  const meetupSelected = location.state ? location.state.meetupSelected : null;
-  const fromDashboard = location.state ? location.state.fromDashboard : false;
-  const [meetup, setMeetup] = useState<DataResponse>(meetupSelected || null);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const meetup = useSelector(
+    (state: ApplicationState) => state.meetups.meetupsById[Number(id)]
+  );
 
   useEffect(() => {
-    async function fetchMeetupById(meetupId: string) {
-      try {
-        const response = await api.get(`meetups/${meetupId}`);
-        setMeetup(response.data);
-        setLoading(false);
-      } catch (err) {
-        setError(true);
-        setLoading(false);
-        toast.error(
-          'Something went wrong while fetching the meetup. Try again later!'
-        );
-      }
+    if (!meetup) {
+      history.push('/dashboard');
     }
+  }, [meetup]);
 
-    if (!fromDashboard && id) {
-      // fetching from backend
-      fetchMeetupById(id);
-    } else {
-      setLoading(false);
-    }
-  }, [fromDashboard, id]);
+  console.log('id', id);
+  console.log('meetup', meetup);
 
   return (
     <Container>
@@ -62,15 +44,6 @@ export default function MeetupDetails({ location }: AllProps) {
           </UpperSection>
 
           <MeetupForm meetupSelected={meetup} disableInputs />
-        </>
-      )}
-
-      {loading && <h2>Loading...</h2>}
-
-      {error && (
-        <>
-          <h2>Meetup not found!</h2>
-          <strong>Try again with a different ID</strong>
         </>
       )}
     </Container>
