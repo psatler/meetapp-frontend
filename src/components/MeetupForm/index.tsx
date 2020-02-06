@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import ReactDatePicker from 'react-datepicker';
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { Input, useField } from '@rocketseat/unform';
@@ -10,7 +12,9 @@ import history from '../../services/history';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-import { DataResponse } from '../../store/ducks/meetup/types';
+import { ApplicationState } from '../../store/createStore';
+import { updateMeetupRequest } from '../../store/ducks/meetup/actions';
+import { DataResponse, MeetupFormFields } from '../../store/ducks/meetup/types';
 import ImageInput from '../ImageInput';
 
 // import * as Yup from 'yup';
@@ -26,15 +30,32 @@ export default function MeetupForm({
   meetupSelected,
   disableInputs,
 }: OwnProps) {
+  const { id } = useParams();
+  const dispatch = useDispatch();
   // const ref = useRef(null) as React.RefObject<ReactDatePicker>;
   const ref = useRef(null) as React.RefObject<
     ReactDatePicker & HTMLInputElement
   >;
   const { fieldName, registerField } = useField('date');
-  const [selected, setSelected] = useState(
-    (meetupSelected && new Date(meetupSelected.date)) || new Date()
+
+  const meetup = useSelector(
+    (state: ApplicationState) => state.meetups.meetupsById[Number(id)]
   );
-  const [loading, setLoading] = useState(false);
+  const loading = useSelector(
+    (state: ApplicationState) => state.meetups.loading
+  );
+
+  console.log('meetup', meetup);
+
+  const [selected, setSelected] = useState(
+    (meetup && new Date(meetup.date)) || new Date()
+  );
+
+  useEffect(() => {
+    if (!meetup) {
+      history.push('/dashboard');
+    }
+  }, [meetup]);
 
   useEffect(() => {
     if (ref.current) {
@@ -49,43 +70,12 @@ export default function MeetupForm({
     }
   }, [ref.current, fieldName]); // eslint-disable-line
 
-  async function onSubmit(data: any) {
-    try {
-      setLoading(true);
-      const {
-        title,
-        description,
-        location,
-        date,
-        banner_image_id, // eslint-disable-line @typescript-eslint/camelcase
-      } = data;
-
-      const formattedDate = format(
-        new Date(date),
-        "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-      );
-      // "2020-02-27T21:00:00.000Z",
-
-      console.log('formattedDate', formattedDate);
-
-      const updatedMeetup = {
-        title,
-        description,
-        location,
-        date: formattedDate,
-        banner_image_id, // eslint-disable-line @typescript-eslint/camelcase
-      };
-      console.log('updatedMeetup', updatedMeetup);
-
-      await api.put(`meetups/${meetupSelected.id}`, updatedMeetup);
-      setLoading(false);
-      toast.success(`Meetup '${title}' was updated!`);
-      history.goBack();
-    } catch (error) {
-      console.log('error updatedMeetup', error);
-      toast.error(`Meetup was not updated. Try again later!`);
-      setLoading(false);
-    }
+  function onSubmit(data: any) {
+    const meetupFormInputs: MeetupFormFields = {
+      ...data,
+      meetupId: id,
+    };
+    dispatch(updateMeetupRequest(meetupFormInputs));
   }
 
   console.log('loading', loading);
@@ -123,6 +113,11 @@ export default function MeetupForm({
         onChange={(date: Date) => setSelected(date)}
         ref={ref}
         disabled={disableInputs}
+        showTimeSelect
+        timeFormat="HH:mm"
+        timeIntervals={15}
+        timeCaption="time"
+        dateFormat="MMMM dd, yyyy HH:mm"
       />
       <Input
         name={fieldName}

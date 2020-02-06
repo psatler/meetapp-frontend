@@ -17,10 +17,26 @@ export interface BannerInfo {
   path: string;
 }
 
+export interface UpdateMeetupResponse extends DataResponse {
+  banner_image_id: string;
+  createdAt: string;
+  updatedAt: string;
+  user_id: number;
+}
+
+export interface MeetupFormFields {
+  title: string;
+  description: string;
+  location: string;
+  date: string;
+  banner_image_id: string;
+  meetupId: string;
+}
+
 export enum MeetupTypes {
-  MEETUP_REQUEST = '@meetup/MEETUP_REQUEST',
-  MEETUP_SUCCESS = '@meetup/MEETUP_SUCCESS',
-  MEETUP_FAILURE = '@meetup/MEETUP_FAILURE',
+  UPDATE_MEETUP_REQUEST = '@meetup/UPDATE_MEETUP_REQUEST',
+  UPDATE_MEETUP_SUCCESS = '@meetup/UPDATE_MEETUP_SUCCESS',
+  UPDATE_MEETUP_FAILURE = '@meetup/UPDATE_MEETUP_FAILURE',
   LOAD_MEETUPS = '@meetup/LOAD_MEETUPS',
 }
 
@@ -31,7 +47,25 @@ export interface LoadMeetupAction {
   };
 }
 
-export type MeetupActionTypes = LoadMeetupAction;
+export interface UpdateMeetupRequestAction {
+  type: MeetupTypes.UPDATE_MEETUP_REQUEST;
+  payload: MeetupFormFields;
+}
+
+export interface UpdateMeetupSuccessAction {
+  type: MeetupTypes.UPDATE_MEETUP_SUCCESS;
+  payload: DataResponse;
+}
+
+export interface UpdateMeetupFailureAction {
+  type: MeetupTypes.UPDATE_MEETUP_FAILURE;
+}
+
+export type MeetupActionTypes =
+  | LoadMeetupAction
+  | UpdateMeetupRequestAction
+  | UpdateMeetupSuccessAction
+  | UpdateMeetupFailureAction;
 
 export interface MeetupById {
   [key: number]: DataResponse;
@@ -40,4 +74,5 @@ export interface MeetupById {
 export interface MeetupState {
   meetupsList: DataResponse[];
   meetupsById: MeetupById;
+  loading: boolean;
 }
