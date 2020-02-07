@@ -2,11 +2,16 @@ import { toast } from 'react-toastify';
 
 import { AxiosResponse } from 'axios';
 import { format, parseISO } from 'date-fns';
+import { utcToZonedTime } from 'date-fns-tz';
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 import api from '../../../services/api';
 import { updateMeetupSuccess, updateMeetupFailure } from './actions';
 import { MeetupTypes, UpdateMeetupRequestAction, DataResponse } from './types';
+
+// getting the user timezone
+// const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+const timezoneUTC = 'GMT/UTC-0';
 
 export function* updateMeetup({ payload }: UpdateMeetupRequestAction) {
   try {
@@ -19,10 +24,8 @@ export function* updateMeetup({ payload }: UpdateMeetupRequestAction) {
       meetupId,
     } = payload;
 
-    const formattedDate = format(
-      new Date(date),
-      "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-    );
+    const timezonedTime = utcToZonedTime(new Date(date), timezoneUTC); // the local time in a given timezone
+    const formattedDate = format(timezonedTime, "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 
     const updatedMeetupInfo = {
       title,
@@ -48,11 +51,9 @@ export function* updateMeetup({ payload }: UpdateMeetupRequestAction) {
       dateFormatted,
     };
 
-    console.log('response', response.data);
     yield put(updateMeetupSuccess(meetupSuccessResponse));
     toast.success(`Meetup updated!`);
   } catch (error) {
-    console.warn('error updatedMeetup', error);
     yield put(updateMeetupFailure());
     toast.error(`Meetup was not updated. Try again later!`);
   }
