@@ -45,8 +45,6 @@ export default function MeetupForm({
     (state: ApplicationState) => state.meetups.loading
   );
 
-  console.log('meetup', meetup);
-
   const [selected, setSelected] = useState(
     (meetup && new Date(meetup.date)) || new Date()
   );
@@ -77,8 +75,6 @@ export default function MeetupForm({
     };
     dispatch(updateMeetupRequest(meetupFormInputs));
   }
-
-  console.log('loading', loading);
 
   return (
     <FormContainer

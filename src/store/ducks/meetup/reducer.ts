@@ -99,6 +99,22 @@ const meetupReducer: Reducer<MeetupState, MeetupActionTypes> = (
       };
     }
 
+    case MeetupTypes.DELETE_MEETUP_SUCCESS: {
+      const { id } = action.payload;
+      const newMeetupList = state.meetupsList.filter(
+        meetup => meetup.id !== id
+      );
+      // value below will be used to remove the element from object
+      const { [id]: value, ...rest } = state.meetupsById; // eslint-disable-line
+      // delete state.meetupsById[id];
+
+      return {
+        ...state,
+        meetupsList: newMeetupList,
+        meetupsById: rest,
+      };
+    }
+
     default:
       return state;
   }

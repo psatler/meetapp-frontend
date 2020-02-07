@@ -2,7 +2,6 @@ import { action } from 'typesafe-actions';
 
 import {
   DataResponse,
-  UpdateMeetupResponse,
   MeetupTypes,
   MeetupActionTypes,
   MeetupFormFields,
@@ -22,6 +21,18 @@ export function updateMeetupSuccess(meetup: DataResponse): MeetupActionTypes {
   return action(MeetupTypes.UPDATE_MEETUP_SUCCESS, meetup);
 }
 
-export function updateMeetupFailure() {
+export function updateMeetupFailure(): MeetupActionTypes {
   return action(MeetupTypes.UPDATE_MEETUP_FAILURE);
+}
+
+export function deleteMeetupRequest(): MeetupActionTypes {
+  return action(MeetupTypes.DELETE_MEETUP_REQUEST);
+}
+
+export function deleteMeetupSuccess(id: number): MeetupActionTypes {
+  return action(MeetupTypes.DELETE_MEETUP_SUCCESS, { id });
+}
+
+export function deleteMeetupFailure(): MeetupActionTypes {
+  return action(MeetupTypes.DELETE_MEETUP_FAILURE);
 }
