@@ -27,8 +27,6 @@ export default function Profile() {
   ) as object;
 
   function onSubmit(data: any) {
-    console.log('data Profile component', data);
-
     dispatch(updateProfileRequest(data));
   }
 

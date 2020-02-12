@@ -52,7 +52,10 @@ export default function ImageInput({
       <label htmlFor={inputId}>
         <img
           src={
-            preview || 'https://api.adorable.io/avatars/50/abott@adorable.png'
+            preview ||
+            `https://api.adorable.io/avatars/${
+              isMeetupBanner ? '800' : '50'
+            }/abott@adorable.png`
           }
           alt=""
         />

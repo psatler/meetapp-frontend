@@ -2,7 +2,7 @@ import { Form, Input } from '@rocketseat/unform';
 import { darken } from 'polished';
 import styled, { css } from 'styled-components';
 
-export const TextArea = styled(Input).attrs(props => ({
+export const TextArea = styled(Input).attrs(() => ({
   cols: 100,
   rows: 5,
 }))`

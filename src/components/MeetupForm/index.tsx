@@ -6,30 +6,38 @@ import { toast } from 'react-toastify';
 
 import { Input, useField } from '@rocketseat/unform';
 import { format } from 'date-fns';
+import * as Yup from 'yup';
 
-import api from '../../services/api';
 import history from '../../services/history';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
 import { ApplicationState } from '../../store/createStore';
-import { updateMeetupRequest } from '../../store/ducks/meetup/actions';
-import { DataResponse, MeetupFormFields } from '../../store/ducks/meetup/types';
+import {
+  updateMeetupRequest,
+  createMeetupRequest,
+} from '../../store/ducks/meetup/actions';
+import {
+  MeetupFormFieldsWithId,
+  MeetupFormFields,
+} from '../../store/ducks/meetup/types';
 import ImageInput from '../ImageInput';
-
-// import * as Yup from 'yup';
-
 import { FormContainer, TextArea } from './styles';
 
 interface OwnProps {
-  meetupSelected: DataResponse;
   disableInputs?: boolean;
+  newMeetup?: boolean;
 }
 
-export default function MeetupForm({
-  meetupSelected,
-  disableInputs,
-}: OwnProps) {
+const schema = Yup.object().shape({
+  banner_image_id: Yup.number(), // eslint-disable-line
+  title: Yup.string().required('A title is required'),
+  description: Yup.string().required('A description is required'),
+  date: Yup.date().required('Date is required'),
+  location: Yup.string().required('A location is required'),
+});
+
+export default function MeetupForm({ disableInputs, newMeetup }: OwnProps) {
   const { id } = useParams();
   const dispatch = useDispatch();
   // const ref = useRef(null) as React.RefObject<ReactDatePicker>;
@@ -50,10 +58,10 @@ export default function MeetupForm({
   );
 
   useEffect(() => {
-    if (!meetup) {
+    if (!newMeetup && !meetup) {
       history.push('/dashboard');
     }
-  }, [meetup]);
+  }, [meetup, newMeetup]);
 
   useEffect(() => {
     if (ref.current) {
@@ -69,16 +77,22 @@ export default function MeetupForm({
   }, [ref.current, fieldName]); // eslint-disable-line
 
   function onSubmit(data: any) {
-    const meetupFormInputs: MeetupFormFields = {
-      ...data,
-      meetupId: id,
-    };
-    dispatch(updateMeetupRequest(meetupFormInputs));
+    if (newMeetup) {
+      console.log('new meetup data', data);
+      dispatch(createMeetupRequest(data as MeetupFormFields));
+    } else {
+      const meetupFormInputs: MeetupFormFieldsWithId = {
+        ...data,
+        meetupId: id,
+      };
+      dispatch(updateMeetupRequest(meetupFormInputs));
+    }
   }
 
   return (
     <FormContainer
-      initialData={meetupSelected}
+      schema={schema}
+      initialData={meetup}
       onSubmit={onSubmit}
       loading={loading}
     >
@@ -129,9 +143,15 @@ export default function MeetupForm({
         disabled={disableInputs}
       />
 
-      {!disableInputs && (
+      {!disableInputs && !newMeetup && (
         <button type="submit">
           {loading ? 'Saving changes...' : 'Save meetup changes'}{' '}
+        </button>
+      )}
+
+      {!disableInputs && newMeetup && (
+        <button type="submit">
+          {loading ? 'Creating meetup...' : 'Save new meetup'}{' '}
         </button>
       )}
     </FormContainer>

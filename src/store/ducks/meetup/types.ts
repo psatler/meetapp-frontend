@@ -30,6 +30,9 @@ export interface MeetupFormFields {
   location: string;
   date: string;
   banner_image_id: string;
+}
+
+export interface MeetupFormFieldsWithId extends MeetupFormFields {
   meetupId: string;
 }
 
@@ -41,6 +44,9 @@ export enum MeetupTypes {
   DELETE_MEETUP_REQUEST = '@meetup/DELETE_MEETUP_REQUEST',
   DELETE_MEETUP_SUCCESS = '@meetup/DELETE_MEETUP_SUCCESS',
   DELETE_MEETUP_FAILURE = '@meetup/DELETE_MEETUP_FAILURE',
+  CREATE_MEETUP_REQUEST = '@meetup/CREATE_MEETUP_REQUEST',
+  CREATE_MEETUP_SUCCESS = '@meetup/CREATE_MEETUP_SUCCESS',
+  CREATE_MEETUP_FAILURE = '@meetup/CREATE_MEETUP_FAILURE',
 }
 
 export interface LoadMeetupAction {
@@ -50,9 +56,22 @@ export interface LoadMeetupAction {
   };
 }
 
+export interface CreateMeetupRequestAction {
+  type: MeetupTypes.CREATE_MEETUP_REQUEST;
+  payload: MeetupFormFields;
+}
+
+export interface CreateMeetupSuccessAction {
+  type: MeetupTypes.CREATE_MEETUP_SUCCESS;
+}
+
+export interface CreateMeetupFailureAction {
+  type: MeetupTypes.CREATE_MEETUP_FAILURE;
+}
+
 export interface UpdateMeetupRequestAction {
   type: MeetupTypes.UPDATE_MEETUP_REQUEST;
-  payload: MeetupFormFields;
+  payload: MeetupFormFieldsWithId;
 }
 
 export interface UpdateMeetupSuccessAction {
@@ -86,7 +105,10 @@ export type MeetupActionTypes =
   | UpdateMeetupFailureAction
   | DeleteMeetupRequestAction
   | DeleteMeetupSuccessAction
-  | DeleteMeetupFailureAction;
+  | DeleteMeetupFailureAction
+  | CreateMeetupRequestAction
+  | CreateMeetupSuccessAction
+  | CreateMeetupFailureAction;
 
 export interface MeetupById {
   [key: number]: DataResponse;

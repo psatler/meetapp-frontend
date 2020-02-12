@@ -67,7 +67,8 @@ export default function MeetupDetails() {
             </div>
           </UpperSection>
 
-          <MeetupForm meetupSelected={meetup} disableInputs />
+          {/* <MeetupForm meetupSelected={meetup} disableInputs /> */}
+          <MeetupForm disableInputs />
         </>
       )}
     </Container>

@@ -13,15 +13,14 @@ export default function EditMeetup({ location }: RouteComponentProps) {
     return <Redirect to={`/meetup/${id}`} />;
   }
 
-  console.log(meetup);
-
   return (
     <Container>
       <section>
         <strong> {meetup.title} </strong>
       </section>
 
-      <MeetupForm meetupSelected={meetup} />
+      {/* <MeetupForm meetupSelected={meetup} /> */}
+      <MeetupForm />
     </Container>
   );
 }
