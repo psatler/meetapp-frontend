@@ -115,6 +115,37 @@ const meetupReducer: Reducer<MeetupState, MeetupActionTypes> = (
       };
     }
 
+    case MeetupTypes.CREATE_MEETUP_REQUEST: {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+
+    case MeetupTypes.CREATE_MEETUP_FAILURE: {
+      return {
+        ...state,
+        loading: false,
+      };
+    }
+
+    case MeetupTypes.CREATE_MEETUP_SUCCESS: {
+      const { id } = action.payload;
+      const newMeetupList = state.meetupsList.concat(action.payload);
+
+      return {
+        ...state,
+        meetupsList: newMeetupList,
+        meetupsById: {
+          ...state.meetupsById,
+          [id]: {
+            ...action.payload,
+          },
+        },
+        loading: false,
+      };
+    }
+
     default:
       return state;
   }

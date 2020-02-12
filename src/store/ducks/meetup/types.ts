@@ -63,6 +63,7 @@ export interface CreateMeetupRequestAction {
 
 export interface CreateMeetupSuccessAction {
   type: MeetupTypes.CREATE_MEETUP_SUCCESS;
+  payload: DataResponse;
 }
 
 export interface CreateMeetupFailureAction {

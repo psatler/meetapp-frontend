@@ -2,10 +2,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import ReactDatePicker from 'react-datepicker';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
 import { Input, useField } from '@rocketseat/unform';
-import { format } from 'date-fns';
 import * as Yup from 'yup';
 
 import history from '../../services/history';
@@ -78,7 +76,6 @@ export default function MeetupForm({ disableInputs, newMeetup }: OwnProps) {
 
   function onSubmit(data: any) {
     if (newMeetup) {
-      console.log('new meetup data', data);
       dispatch(createMeetupRequest(data as MeetupFormFields));
     } else {
       const meetupFormInputs: MeetupFormFieldsWithId = {

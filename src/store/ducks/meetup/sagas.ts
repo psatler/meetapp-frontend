@@ -77,12 +77,10 @@ export function* updateMeetup({ payload }: UpdateMeetupRequestAction) {
 
 export function* createMeetup({ payload }: CreateMeetupRequestAction) {
   try {
-    console.log('payload', payload);
     const { banner_image_id } = payload; // eslint-disable-line
     if (!banner_image_id) { // eslint-disable-line
       throw new Error('You should insert a banner image for the meetup!');
     }
-    // const { banner_image_id, title, description, location, date } = payload;
     const newMeetupInfo = setMeetupInfo(payload);
 
     const response: AxiosResponse<DataResponse> = yield call(
