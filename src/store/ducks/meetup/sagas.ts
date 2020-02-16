@@ -104,6 +104,7 @@ export function* createMeetup({ payload }: CreateMeetupRequestAction) {
   } catch (error) {
     if (error.message === 'You should insert a banner image for the meetup!') {
       toast.error(error.message);
+      yield put(createMeetupFailure());
     } else {
       toast.error(`Meetup was not created. Try again later!`);
       yield put(createMeetupFailure());
