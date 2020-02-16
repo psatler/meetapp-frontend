@@ -18,9 +18,8 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  border: 2px solid green;
 `;
+
 export const ModalContent = styled.div`
   width: 500px;
   height: 300px;
@@ -30,7 +29,6 @@ export const ModalContent = styled.div`
   align-items: center;
 
   padding: 5px;
-  /* background: linear-gradient(-90deg, #ffafbd, #ffc3a0); */
   background: linear-gradient(-90deg, #2a2332, #402944);
   border-radius: 10px;
 

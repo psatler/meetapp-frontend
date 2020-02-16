@@ -100,7 +100,7 @@ export const FormContainer = styled(Form)<FormContainerProps>`
     /* to make the transition smoother */
     transition: background 0.5s;
 
-    cursor: ${props =>
+    ${props =>
       props.loading &&
       css`
         cursor: not-allowed;

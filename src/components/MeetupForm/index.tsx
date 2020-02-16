@@ -141,13 +141,13 @@ export default function MeetupForm({ disableInputs, newMeetup }: OwnProps) {
       />
 
       {!disableInputs && !newMeetup && (
-        <button type="submit">
+        <button type="submit" disabled={loading}>
           {loading ? 'Saving changes...' : 'Save meetup changes'}{' '}
         </button>
       )}
 
       {!disableInputs && newMeetup && (
-        <button type="submit">
+        <button type="submit" disabled={loading}>
           {loading ? 'Creating meetup...' : 'Save new meetup'}{' '}
         </button>
       )}
