@@ -41,19 +41,21 @@ export default function ImageInput({
   }, [inputId]); //eslint-disable-line
 
   async function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setImageLoaded(false);
+    if (e.target.files && e.target.files[0]) {
+      setImageLoaded(false);
 
-    const data = new FormData();
-    // eslint-disable-next-line
-    data.append('file', e.target.files![0]);
+      const data = new FormData();
+      // eslint-disable-next-line
+      data.append('file', e.target.files![0]);
 
-    const response = await api.post('files', data);
+      const response = await api.post('files', data);
 
-    setImageLoaded(false);
+      setImageLoaded(false);
 
-    const { id, url } = response.data;
-    setFile(id);
-    setPreview(url);
+      const { id, url } = response.data;
+      setFile(id);
+      setPreview(url);
+    }
   }
 
   function handleImageLoaded() {
