@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 import { useField } from '@rocketseat/unform';
 
@@ -26,6 +27,9 @@ export default function ImageInput({
   const [file, setFile] = useState(defaultValue?.id); // id returned by the api to be set in the data field
   const [preview, setPreview] = useState(defaultValue?.url);
 
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [showErrorToast, setShowErrorToast] = useState(false);
+
   useEffect(() => {
     if (ref.current) {
       registerField({
@@ -37,25 +41,28 @@ export default function ImageInput({
   }, [inputId]); //eslint-disable-line
 
   async function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setImageLoaded(false);
+
     const data = new FormData();
     // eslint-disable-next-line
     data.append('file', e.target.files![0]);
 
     const response = await api.post('files', data);
 
+    setImageLoaded(false);
+
     const { id, url } = response.data;
     setFile(id);
     setPreview(url);
   }
 
-  const [imageLoaded, setImageLoaded] = useState(false);
-
   function handleImageLoaded() {
     setImageLoaded(true);
   }
+
   function handleImageLoadError() {
-    // eslint-disable-next-line
-    console.log('image has not finished loading!');
+    toast.error('The image could not be loaded!');
+    setShowErrorToast(true);
   }
 
   return (
@@ -83,7 +90,8 @@ export default function ImageInput({
           borderTopColor="#f94d6a"
           borderSize={8}
           loaderSize={60}
-          displayLoadingIcon={!imageLoaded}
+          // if image is not loaded and no error has happened, display load icon
+          displayLoadingIcon={!imageLoaded && !showErrorToast}
           message={
             isMeetupBanner
               ? 'Loading banner image...'
