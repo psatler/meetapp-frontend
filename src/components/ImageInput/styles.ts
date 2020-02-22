@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 interface ContainerStyledProps {
   isMeetupBanner?: boolean;
   disableInputs?: boolean;
+  isImageLoaded: boolean;
 }
 
 export const Container = styled.div<ContainerStyledProps>`
@@ -40,6 +41,15 @@ export const Container = styled.div<ContainerStyledProps>`
               /* insert a background while the image didn't load */
               background: #eee;
             `}
+    }
+
+    img {
+      /* hide image tag while it hasn't loaded yet */
+      ${props =>
+        !props.isImageLoaded &&
+        css`
+          display: none;
+        `}
     }
 
     input {

@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useField } from '@rocketseat/unform';
 
 import api from '../../services/api';
+import LoadingIcon from '../LoadingIcon';
 import { Container } from './styles';
 
 interface OwnProps {
@@ -47,8 +48,22 @@ export default function ImageInput({
     setPreview(url);
   }
 
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  function handleImageLoaded() {
+    setImageLoaded(true);
+  }
+  function handleImageLoadError() {
+    // eslint-disable-next-line
+    console.log('image has not finished loading!');
+  }
+
   return (
-    <Container isMeetupBanner={isMeetupBanner} disableInputs={disableInputs}>
+    <Container
+      isMeetupBanner={isMeetupBanner}
+      disableInputs={disableInputs}
+      isImageLoaded={imageLoaded}
+    >
       <label htmlFor={inputId}>
         <img
           src={
@@ -58,6 +73,22 @@ export default function ImageInput({
             }/abott@adorable.png`
           }
           alt=""
+          onLoad={handleImageLoaded}
+          onError={handleImageLoadError}
+        />
+
+        <LoadingIcon
+          containerHeight={isMeetupBanner ? 300 : 120}
+          borderColor="#f3f3f3"
+          borderTopColor="#f94d6a"
+          borderSize={8}
+          loaderSize={60}
+          displayLoadingIcon={!imageLoaded}
+          message={
+            isMeetupBanner
+              ? 'Loading banner image...'
+              : 'Loading avatar image...'
+          }
         />
 
         <input
