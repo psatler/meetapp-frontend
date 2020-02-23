@@ -20,7 +20,7 @@ import {
   MeetupFormFields,
 } from '../../store/ducks/meetup/types';
 import ImageInput from '../ImageInput';
-import { FormContainer, TextArea } from './styles';
+import { FormContainer, TextArea, ReactDatePickerStyled } from './styles';
 
 interface OwnProps {
   disableInputs?: boolean;
@@ -114,7 +114,7 @@ export default function MeetupForm({ disableInputs, newMeetup }: OwnProps) {
         disabled={disableInputs}
       />
 
-      <ReactDatePicker
+      <ReactDatePickerStyled
         name="datePicker"
         selected={selected}
         onChange={(date: Date) => setSelected(date)}

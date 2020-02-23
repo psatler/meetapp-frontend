@@ -1,3 +1,5 @@
+import ReactDatePicker from 'react-datepicker';
+
 import { Form, Input } from '@rocketseat/unform';
 import { darken } from 'polished';
 import styled, { css } from 'styled-components';
@@ -121,4 +123,13 @@ export const FormContainer = styled(Form)<FormContainerProps>`
       opacity: 1;
     }
   }
+
+  @media only screen and (max-width: 425px) {
+    button {
+      height: 28px;
+      font-size: 12px;
+    }
+  }
 `;
+
+export const ReactDatePickerStyled = styled(ReactDatePicker)``;

@@ -16,4 +16,28 @@ export const Container = styled.div`
       margin-left: 5px;
     }
   }
+
+  @media only screen and (max-width: 768px) {
+    max-width: 700px;
+  }
+
+  @media only screen and (max-width: 425px) {
+    max-width: 400px;
+
+    section {
+      margin-bottom: 20px;
+
+      strong {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 375px) {
+    max-width: 350px;
+  }
+
+  @media only screen and (max-width: 320px) {
+    max-width: 310px;
+  }
 `;
