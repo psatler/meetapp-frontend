@@ -4,6 +4,15 @@ import styled from 'styled-components';
 export const Container = styled.div`
   background: #fff;
   padding: 0 30px;
+
+  /* making the header sticky on smaller screens  */
+  /* pure css solution from https://www.npmjs.com/package/react-sticky#css  */
+  @media only screen and (max-width: 425px) {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
 `;
 
 export const Content = styled.div`
