@@ -5,6 +5,7 @@ export const Container = styled.div`
   background: #fff;
   padding: 0 30px;
 `;
+
 export const Content = styled.div`
   height: 92px;
   max-width: 900px;
@@ -21,7 +22,17 @@ export const Content = styled.div`
       margin-left: 15px;
     }
   }
+
+  @media only screen and (max-width: 425px) {
+    height: 100%;
+    margin-top: 5px;
+
+    aside {
+      margin-bottom: 5px;
+    }
+  }
 `;
+
 export const Profile = styled.div`
   display: flex;
   align-items: center;
@@ -65,6 +76,33 @@ export const Profile = styled.div`
 
     &:hover {
       background: ${darken(0.08, '#f94d6a')};
+    }
+  }
+
+  @media only screen and (max-width: 425px) {
+    flex-direction: column;
+    justify-content: center;
+
+    div {
+      text-align: center;
+      margin-right: 0;
+    }
+
+    img {
+      width: 24px;
+      height: 24px;
+      border-radius: 50px;
+      margin-right: 0;
+    }
+
+    button {
+      height: 22px;
+      font-weight: bold;
+      color: #fff;
+      border: 0;
+      border-radius: 4px;
+      font-size: 12px;
+      padding: 0 15px;
     }
   }
 `;
