@@ -16,6 +16,22 @@ export const Container = styled.div`
     color: #fff;
     /* margin-top: 5px; */
   }
+
+  @media only screen and (max-width: 768px) {
+    max-width: 700px;
+  }
+
+  @media only screen and (max-width: 425px) {
+    max-width: 400px;
+  }
+
+  @media only screen and (max-width: 375px) {
+    max-width: 350px;
+  }
+
+  @media only screen and (max-width: 320px) {
+    max-width: 310px;
+  }
 `;
 
 export const UpperSection = styled.section`
@@ -71,5 +87,19 @@ export const UpperSection = styled.section`
   ul {
     display: flex;
     flex-direction: column;
+  }
+
+  @media only screen and (max-width: 425px) {
+    strong {
+      font-size: 1rem;
+    }
+
+    div {
+      a,
+      button {
+        height: 22px;
+        font-size: 12px;
+      }
+    }
   }
 `;
