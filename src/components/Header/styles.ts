@@ -97,12 +97,7 @@ export const Profile = styled.div`
 
     button {
       height: 22px;
-      font-weight: bold;
-      color: #fff;
-      border: 0;
-      border-radius: 4px;
       font-size: 12px;
-      padding: 0 15px;
     }
   }
 `;
