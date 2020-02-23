@@ -7,6 +7,22 @@ export const Container = styled.div`
 
   display: flex;
   flex-direction: column;
+
+  @media only screen and (max-width: 768px) {
+    max-width: 700px;
+  }
+
+  @media only screen and (max-width: 425px) {
+    max-width: 400px;
+  }
+
+  @media only screen and (max-width: 375px) {
+    max-width: 350px;
+  }
+
+  @media only screen and (max-width: 320px) {
+    max-width: 310px;
+  }
 `;
 
 export const UpperSection = styled.section`
@@ -46,6 +62,17 @@ export const UpperSection = styled.section`
     display: flex;
     flex-direction: column;
   }
+
+  @media only screen and (max-width: 425px) {
+    strong {
+      font-size: 1rem;
+    }
+
+    a {
+      height: 28px;
+      font-size: 12px;
+    }
+  }
 `;
 
 interface MeetupStyledProps {
@@ -82,5 +109,25 @@ export const Meetup = styled.li<MeetupStyledProps>`
     font-size: 1rem;
     color: #979797;
     margin: 15px;
+  }
+
+  @media only screen and (max-width: 425px) {
+    strong {
+      font-size: 1rem;
+    }
+
+    span {
+      font-size: 0.875rem;
+    }
+  }
+
+  @media only screen and (max-width: 375px) {
+    strong {
+      font-size: 0.875rem;
+    }
+
+    span {
+      font-size: 0.675rem;
+    }
   }
 `;
