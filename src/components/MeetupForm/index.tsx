@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import ReactDatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
@@ -7,9 +8,6 @@ import { Input, useField } from '@rocketseat/unform';
 import * as Yup from 'yup';
 
 import history from '../../services/history';
-
-import 'react-datepicker/dist/react-datepicker.css';
-
 import { ApplicationState } from '../../store/createStore';
 import {
   updateMeetupRequest,
@@ -20,7 +18,12 @@ import {
   MeetupFormFields,
 } from '../../store/ducks/meetup/types';
 import ImageInput from '../ImageInput';
-import { FormContainer, TextArea, ReactDatePickerStyled } from './styles';
+import {
+  FormContainer,
+  TextArea,
+  ReactDatePickerStyled,
+  SubmitButton,
+} from './styles';
 
 interface OwnProps {
   disableInputs?: boolean;
@@ -87,12 +90,7 @@ export default function MeetupForm({ disableInputs, newMeetup }: OwnProps) {
   }
 
   return (
-    <FormContainer
-      schema={schema}
-      initialData={meetup}
-      onSubmit={onSubmit}
-      loading={loading}
-    >
+    <FormContainer schema={schema} initialData={meetup} onSubmit={onSubmit}>
       <ImageInput
         name="banner_image_id"
         inputId="banner_image_id"
@@ -141,15 +139,15 @@ export default function MeetupForm({ disableInputs, newMeetup }: OwnProps) {
       />
 
       {!disableInputs && !newMeetup && (
-        <button type="submit" disabled={loading}>
+        <SubmitButton type="submit" disabled={loading} loading={loading}>
           {loading ? 'Saving changes...' : 'Save meetup changes'}{' '}
-        </button>
+        </SubmitButton>
       )}
 
       {!disableInputs && newMeetup && (
-        <button type="submit" disabled={loading}>
+        <SubmitButton type="submit" disabled={loading} loading={loading}>
           {loading ? 'Creating meetup...' : 'Save new meetup'}{' '}
-        </button>
+        </SubmitButton>
       )}
     </FormContainer>
   );

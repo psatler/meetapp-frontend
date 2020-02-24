@@ -21,11 +21,7 @@ export const TextArea = styled(Input).attrs(() => ({
   }
 `;
 
-interface FormContainerProps {
-  loading: boolean;
-}
-
-export const FormContainer = styled(Form)<FormContainerProps>`
+export const FormContainer = styled(Form)`
   display: flex;
   flex-direction: column;
   margin-top: 30px;
@@ -87,32 +83,6 @@ export const FormContainer = styled(Form)<FormContainerProps>`
     margin: 10px 0 20px;
   }
 
-  button {
-    align-self: flex-end;
-    padding: 0 15px;
-    margin: 5px 0 0;
-    height: 44px;
-    /* background: #f94d6a; */
-    background: #d44059;
-    font-weight: bold;
-    color: #fff;
-    border: 0;
-    border-radius: 4px;
-    font-size: 16px;
-    /* to make the transition smoother */
-    transition: background 0.5s;
-
-    ${props =>
-      props.loading &&
-      css`
-        cursor: not-allowed;
-      `};
-
-    &:hover {
-      background: ${darken(0.08, '#f94d6a')};
-    }
-  }
-
   a {
     color: #271e2d;
     margin-top: 15px;
@@ -123,12 +93,40 @@ export const FormContainer = styled(Form)<FormContainerProps>`
       opacity: 1;
     }
   }
+`;
+
+interface SubmitButtonProps {
+  loading: boolean;
+}
+
+export const SubmitButton = styled.button<SubmitButtonProps>`
+  align-self: flex-end;
+  padding: 0 15px;
+  margin: 5px 0 0;
+  height: 44px;
+  /* background: #f94d6a; */
+  background: #d44059;
+  font-weight: bold;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  font-size: 16px;
+  /* to make the transition smoother */
+  transition: background 0.5s;
+
+  ${props =>
+    props.loading &&
+    css`
+      cursor: not-allowed;
+    `};
+
+  &:hover {
+    background: ${darken(0.08, '#f94d6a')};
+  }
 
   @media only screen and (max-width: 425px) {
-    button {
-      height: 28px;
-      font-size: 12px;
-    }
+    height: 28px;
+    font-size: 12px;
   }
 `;
 
