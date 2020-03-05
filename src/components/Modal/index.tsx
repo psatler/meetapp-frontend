@@ -9,21 +9,23 @@ import {
   CancelButton,
 } from './styles';
 
-type OwnProps = {
+interface OwnProps {
   showModal: boolean;
   confirm: () => void;
   dismiss: () => void;
   title: string;
-  children?: React.ReactNode;
-};
+  // children?: React.ReactNode;
+}
 
-export default function Modal({
+// disabling ESLint for the given rule as this only works on TSLint
+/* eslint-disable react/prop-types */
+const Modal: React.FC<OwnProps> = ({
   children,
-  title,
-  showModal,
-  dismiss,
   confirm,
-}: OwnProps) {
+  dismiss,
+  showModal,
+  title,
+}) => {
   if (showModal) {
     return (
       <Container onClick={dismiss}>
@@ -48,4 +50,6 @@ export default function Modal({
   }
 
   return null;
-}
+};
+
+export default Modal;
