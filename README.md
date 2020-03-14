@@ -58,6 +58,8 @@ yarn start (or npm start)
 **PS**: You need to have the [backend app](https://github.com/psatler/meetapp-backend) of
 this application running to get the frontend features working correctly.
 
+[Back to top](#meetapp-frontend)
+
 ### Screens of the app
 
 #### Authentication
@@ -74,6 +76,8 @@ The user will be able to authenticate themselves by email and password.
   <img width="500" height="450" src="screenshots-and-gifs/1-Authentication.png">
 </p>
 
+[Back to top](#meetapp-frontend)
+
 #### Registration
 
 The user will be able to register themselves in the application using name, e-mail and password.
@@ -83,6 +87,8 @@ The user will be able to register themselves in the application using name, e-ma
   <!-- <img width="460" height="300" src="./screenshots/main-page.png"> -->
   <img width="500" height="450" src="screenshots-and-gifs/2-Registration.png">
 </p>
+
+[Back to top](#meetapp-frontend)
 
 #### Dashboard
 
@@ -95,6 +101,8 @@ In this screen, the user can navigate to page to create new meetups.
   <img width="500" height="450" src="screenshots-and-gifs/3-Dashboard.png">
 </p>
 
+[Back to top](#meetapp-frontend)
+
 #### Details
 
 The user can visualize more details of a given meetup previously registered.
@@ -105,6 +113,8 @@ In this screen, they can edit the pieces of information about a meetup or even c
   <!-- <img width="460" height="300" src="./screenshots/main-page.png"> -->
   <img width="500" height="450" src="screenshots-and-gifs/4-MeetupDetails.png">
 </p>
+
+[Back to top](#meetapp-frontend)
 
 #### New / Edit
 
@@ -127,6 +137,8 @@ All the form fields must be validated.
       <img width="500" height="450" src="screenshots-and-gifs/5-EditMeetup.png">
     </p>
 
+[Back to top](#meetapp-frontend)
+
 #### Profile
 
 The user can edit its pieces of information registered on the application.
@@ -143,6 +155,8 @@ All the form fields must be validated.
   <img width="500" height="450" src="screenshots-and-gifs/6-ProfilePageScreenshot.png">
 </p>
 
+[Back to top](#meetapp-frontend)
+
 ---
 
 ### Some dependecies used
@@ -157,6 +171,8 @@ All the form fields must be validated.
 - [Typesafe actions](https://github.com/piotrwitek/typesafe-actions): Typesafe utilities designed to reduce types verbosity and complexity in Redux Architecture.
 - [Redux persist](https://github.com/rt2zz/redux-persist): To persist the reducers in a local storage
 - [React Toastify](https://github.com/fkhadra/react-toastify): To display the toast notifications
+
+[Back to top](#meetapp-frontend)
 
 ---
 
@@ -177,6 +193,8 @@ All the form fields must be validated.
 - Redux [usage with Typescript](https://redux.js.org/recipes/usage-with-typescript/)
 
 - [Typescript Deep Dive](https://basarat.gitbook.io/typescript/) book
+
+[Back to top](#meetapp-frontend)
 
 ---
 
