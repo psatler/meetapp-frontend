@@ -22,13 +22,41 @@ This project has ESLint and Prettier configured as its linter and formatting too
 
 ### Table of Contents
 
-<!-- - [How to Run](#how-to-run) -->
-<!-- - [Features](#features) -->
+- [How to Run](#how-to-run)
+
+  <!-- - [Features](#features) -->
 
 - [Screens of the app](#screens-of-the-app)
+
+  - [Authentication](#authentication)
+  - [Registration](#registration)
+  - [Dashboard](#dashboard)
+  - [Details](#details)
+  - [New / Edit](#new--edit)
+  - [Profile](#profile)
+
 - [Some dependecies used](#some-dependecies-used)
 - [Acknowledgements](#acknowledgements)
 - [License](#license)
+
+### How to Run
+
+First, clone this repository to you local machine. Then, change directory into it
+and install the necessary libraries. Next, you can start the application. Below,
+the commands are shown using `yarn`, but feel free to run them with `npm` if prefer to.
+
+```
+git clone https://github.com/psatler/meetapp-frontend.git
+
+cd meetapp-frontend
+
+yarn (or npm install)
+
+yarn start (or npm start)
+```
+
+**PS**: You need to have the [backend app](https://github.com/psatler/meetapp-backend) of
+this application running to get the frontend features working correctly.
 
 ### Screens of the app
 
